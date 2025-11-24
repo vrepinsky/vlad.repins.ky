@@ -1,0 +1,29 @@
+:root {
+  --font-roboto: "Roboto", sans-serif;
+  --font-inconsolata: "Inconsolata", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-roboto);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code,
+pre,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.monospace {
+  font-family: var(--font-inconsolata);
+}
+
