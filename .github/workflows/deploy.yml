@@ -29,6 +29,7 @@ jobs:
       - name: Publish to deploy branch
         uses: peaceiris/actions-gh-pages@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: deploy
           publish_dir: dist
           force_orphan: true
