@@ -1,6 +1,6 @@
 # Personal Website with React and Bun
 
-This project is pared down to the bare minimum needed to build a static React site with Bun's bundler.
+This project is pared down to the bare minimum needed to build a static React site with Bun's bundler. Using goober for css-in-jss and wouter for super light client side routing.
 
 Install dependencies:
 

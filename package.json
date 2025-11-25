@@ -12,9 +12,6 @@
     "format:check": "bun x prettier . --check"
   },
   "dependencies": {
-    "@linaria/core": "^6.3.0",
-    "@linaria/react": "^6.3.0",
-    "@wyw-in-js/babel-preset": "^0.8.0",
     "goober": "^2.1.18",
     "react": "^19",
     "react-dom": "^19",

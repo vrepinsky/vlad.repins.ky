@@ -1,12 +1,10 @@
+import { Nux } from "@/components/nux/Nux";
 import { styled } from "goober";
 
 export const Lab = () => {
   return (
     <Page>
-      <Title>Lab</Title>
-      <Content>
-        <p>Coming Soon 🔜</p>
-      </Content>
+      <Nux />
     </Page>
   );
 };
@@ -17,17 +15,9 @@ const Page = styled("div")`
   background: ${(props) => props.theme.palette.bg};
   color: ${(props) => props.theme.palette.text};
   overflow-y: auto;
-`;
-
-const Title = styled("h1")`
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  margin-bottom: 1rem;
-`;
-
-const Content = styled("div")`
-  font-size: 1.2rem;
-  max-width: 42ch;
-  line-height: 1.6;
-  color: ${(props) => props.theme.palette.text};
-  opacity: 0.85;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 `;

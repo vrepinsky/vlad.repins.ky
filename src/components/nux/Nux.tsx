@@ -1,10 +1,9 @@
-import { Nux } from "@/components/nux/Nux";
 import { styled } from "goober";
 
-export const CV = () => {
+export const Nux = () => {
   return (
     <Page>
-      <Nux />
+      <Title>This Page is Under Construction 🚧</Title>
     </Page>
   );
 };
@@ -20,4 +19,9 @@ const Page = styled("div")`
   align-items: center;
   justify-content: center;
   text-align: center;
+`;
+
+const Title = styled("h1")`
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  margin-bottom: 1rem;
 `;
