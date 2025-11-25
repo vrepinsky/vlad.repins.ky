@@ -3,7 +3,7 @@ export type Theme = {
     icon: string;
     palette: {
         bg: string;
-        b80: string;
+        text: string;
         accent: string;
     };
     fontSizes: {

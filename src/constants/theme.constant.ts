@@ -14,7 +14,7 @@ export const LIGHT_THEME: Theme = {
     icon: "☀️",
     palette: {
         bg: "#ffffff",
-        b80: "#d4d4d4",
+        text: "#1a1a1a",
         accent: "#f5a623",
     },
     fontSizes: FONT_SIZES,
@@ -25,7 +25,7 @@ export const DARK_THEME: Theme = {
     icon: "🌙",
     palette: {
         bg: "#1a1a1a",
-        b80: "#e0e0e0",
+        text: "#f5f5f5",
         accent: "#ffbf69",
     },
     fontSizes: FONT_SIZES,

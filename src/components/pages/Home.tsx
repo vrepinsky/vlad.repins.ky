@@ -16,7 +16,7 @@ const Page = styled("div")`
   flex: 1;
   padding: 4rem clamp(1.5rem, 4vw, 6rem);
   background: ${(props) => props.theme.palette.bg};
-  color: ${(props) => props.theme.palette.b80};
+  color: ${(props) => props.theme.palette.text};
   overflow-y: auto;
 `;
 
@@ -29,7 +29,7 @@ const Lead = styled("p")`
   font-size: 1.2rem;
   max-width: 42ch;
   line-height: 1.6;
-  color: ${(props) => props.theme.palette.b80};
+  color: ${(props) => props.theme.palette.text};
   opacity: 0.85;
 `;
 

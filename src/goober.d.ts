@@ -3,7 +3,7 @@ declare namespace goober {
         icon: string;
         palette: {
             bg: string;
-            b80: string;
+            text: string;
             accent: string;
         };
         fontSizes: {

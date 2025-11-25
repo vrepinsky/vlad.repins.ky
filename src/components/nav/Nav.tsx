@@ -38,7 +38,7 @@ const NavLink = styled(Link)`
   font-family: var(--font-inconsolata);
   font-size: ${(props) => props.theme.fontSizes.xl};
   letter-spacing: 0.08em;
-  color: ${(props) => props.theme.palette.b80};
+  color: ${(props) => props.theme.palette.text};
   padding-bottom: 0.2rem;
   text-decoration: none;
 `;
