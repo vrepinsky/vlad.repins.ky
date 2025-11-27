@@ -1,10 +1,24 @@
 import { styled } from "goober";
-import { Route, Router } from "wouter";
+import { Route, Router, useLocation } from "wouter";
 import { Sidebar } from "@/components/sidebar/Sidebar";
 import { Home } from "@/components/pages/Home";
 import { CV } from "@/components/pages/CV";
 import { Lab } from "@/components/pages/Lab";
 import { About } from "../pages/About";
+import { RouteTransition } from "@/components/core/RouteTransition";
+
+const Routes = () => {
+  const [location] = useLocation();
+
+  return (
+    <RouteTransition key={location}>
+      <Route path="/" component={Home} />
+      <Route path="/cv" component={CV} />
+      <Route path="/lab" component={Lab} />
+      <Route path="/about" component={About} />
+    </RouteTransition>
+  );
+};
 
 export const App = () => {
   return (
@@ -12,10 +26,7 @@ export const App = () => {
       <AppContainer>
         <Sidebar />
         <ContentArea>
-          <Route path="/" component={Home} />
-          <Route path="/cv" component={CV} />
-          <Route path="/lab" component={Lab} />
-          <Route path="/about" component={About} />
+          <Routes />
         </ContentArea>
       </AppContainer>
     </Router>
@@ -38,6 +49,7 @@ const ContentArea = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: ${(props) => props.theme.palette.bg};
 
   @media (max-width: 768px) {
     margin-left: 0;
