@@ -4,6 +4,7 @@ declare namespace goober {
     palette: {
       bg: string;
       text: string;
+      textMuted: string;
       accent: string;
     };
     fontSizes: {

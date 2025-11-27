@@ -25,6 +25,6 @@ const ListContainer = styled("div")`
 const EntryWrapper = styled("div")`
   position: relative;
   width: 100%;
-  max-width: 512px;
+  max-width: 600px;
   margin-bottom: 4rem;
 `;

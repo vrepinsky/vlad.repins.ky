@@ -15,6 +15,7 @@ export const LIGHT_THEME: Theme = {
   palette: {
     bg: "#ffffff",
     text: "#1a1a1a",
+    textMuted: "#808080",
     accent: "#f5a623",
   },
   fontSizes: FONT_SIZES,
@@ -26,6 +27,7 @@ export const DARK_THEME: Theme = {
   palette: {
     bg: "#1a1a1a",
     text: "#f5f5f5",
+    textMuted: "#999999",
     accent: "#ffbf69",
   },
   fontSizes: FONT_SIZES,

@@ -2,18 +2,18 @@ import { useTheme } from "@/hooks/useTheme";
 import { useToggleTheme } from "@/hooks/useToggleTheme";
 import { styled } from "goober";
 
-export const NavThemeToggle = () => {
+export const SidebarThemeToggle = () => {
   const toggleTheme = useToggleTheme();
   const theme = useTheme();
 
   return (
-    <NavThemeToggleButton onClick={toggleTheme}>
+    <SidebarThemeToggleButton onClick={toggleTheme}>
       {theme.icon}
-    </NavThemeToggleButton>
+    </SidebarThemeToggleButton>
   );
 };
 
-const NavThemeToggleButton = styled("button")`
+const SidebarThemeToggleButton = styled("button")`
   background: none;
   border: none;
   cursor: pointer;

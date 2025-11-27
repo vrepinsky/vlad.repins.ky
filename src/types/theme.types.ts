@@ -4,6 +4,7 @@ export type Theme = {
   palette: {
     bg: string;
     text: string;
+    textMuted: string;
     accent: string;
   };
   fontSizes: {
