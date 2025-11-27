@@ -2,42 +2,47 @@ import { useTheme } from "@/hooks/useTheme";
 import { getImageInvertFilter } from "@/utils/theme.util";
 import { styled } from "goober";
 import constructionImage from "../../../public/construction.jpg";
+import { Heading, Subtitle } from "./Typography";
 
 export const Nux = () => {
   const theme = useTheme();
   const imageFilter = getImageInvertFilter(theme);
 
   return (
-    <Page>
-      <Title>Work in Progress</Title>
+    <Container>
+      <TitleWrapper>
+        <Heading>The Page is Still Under Construction</Heading>
+        <Subtitle>Check back in a bit. Rome was not built in a day.</Subtitle>
+      </TitleWrapper>
       <Image
         src={constructionImage}
         alt="Eiffel Tower under construction"
         style={{ filter: imageFilter }}
       />
-    </Page>
+    </Container>
   );
 };
 
-const Page = styled("div")`
+const Container = styled("div")`
   flex: 1;
-  padding: 4rem clamp(1.5rem, 4vw, 6rem);
-  background: ${(props) => props.theme.palette.bg};
-  color: ${(props) => props.theme.palette.text};
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const TitleWrapper = styled("div")`
+  margin-top: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-`;
-
-const Title = styled("h1")`
-  font-size: ${(props) => props.theme.fontSizes.xl};
-  margin-bottom: 1rem;
+  gap: 1rem;
 `;
 
 const Image = styled("img")`
-  max-width: 500px;
+  width: 100%;
+  max-width: 600px;
   height: auto;
 `;
