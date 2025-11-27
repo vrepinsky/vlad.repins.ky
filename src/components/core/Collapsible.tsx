@@ -19,9 +19,9 @@ export const Collapsible = ({
     <Wrapper>
       <Toggle onClick={() => setIsExpanded(!isExpanded)}>
         <span>{label}</span>
-        <Triangle $isExpanded={isExpanded}>▶</Triangle>
+        <Triangle $expanded={isExpanded}>▶</Triangle>
       </Toggle>
-      <Content $isExpanded={isExpanded}>
+      <Content $expanded={isExpanded}>
         <ContentInner>{children}</ContentInner>
       </Content>
     </Wrapper>
@@ -50,20 +50,20 @@ const Toggle = styled("div")`
   }
 `;
 
-const Triangle = styled("span")<{ $isExpanded: boolean }>`
+const Triangle = styled("span")<{ $expanded: boolean }>`
   display: inline-block;
   transition: transform 0.3s ease;
-  transform: rotate(${(props) => (props.$isExpanded ? "90deg" : "0deg")});
+  transform: rotate(${(props) => (props.$expanded ? "90deg" : "0deg")});
   transform-origin: center;
 `;
 
-const Content = styled("div")<{ $isExpanded: boolean }>`
+const Content = styled("div")<{ $expanded: boolean }>`
   overflow: hidden;
   transition:
     max-height 0.3s ease,
     opacity 0.3s ease;
-  max-height: ${(props) => (props.$isExpanded ? "1000px" : "0")};
-  opacity: ${(props) => (props.$isExpanded ? "1" : "0")};
+  max-height: ${(props) => (props.$expanded ? "1000px" : "0")};
+  opacity: ${(props) => (props.$expanded ? "1" : "0")};
 `;
 
 const ContentInner = styled("div")`

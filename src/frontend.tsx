@@ -6,7 +6,15 @@ import { setup } from "goober";
 import { StrictMode, createElement } from "react";
 import { createRoot } from "react-dom/client";
 
-setup(createElement, undefined, useTheme);
+setup(createElement, undefined, useTheme, (props: any) => {
+  const filtered: Record<string, any> = {};
+  for (const prop in props) {
+    if (!prop.startsWith("$")) {
+      filtered[prop] = props[prop];
+    }
+  }
+  return filtered;
+});
 
 const elem = document.getElementById("root")!;
 
