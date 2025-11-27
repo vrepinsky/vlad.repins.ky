@@ -16,7 +16,7 @@ export const Collapsible = ({
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
   return (
-    <>
+    <Wrapper>
       <Toggle onClick={() => setIsExpanded(!isExpanded)}>
         <span>{label}</span>
         <Triangle $isExpanded={isExpanded}>▶</Triangle>
@@ -24,9 +24,14 @@ export const Collapsible = ({
       <Content $isExpanded={isExpanded}>
         <ContentInner>{children}</ContentInner>
       </Content>
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled("div")`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Toggle = styled("div")`
   display: flex;
