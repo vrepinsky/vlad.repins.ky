@@ -3,7 +3,7 @@ export type CVEntry = {
   endDate: string;
   company: string;
   title: string;
-  description: string;
+  description: string[];
   technologies: string[];
   location: string;
   link?: string;

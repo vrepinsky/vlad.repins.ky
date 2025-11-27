@@ -12,7 +12,9 @@ export const CvEntry = ({ entry }: { entry: CVEntry }) => {
       <Subtitle>
         {entry.startDate} - {entry.endDate} • {entry.location}
       </Subtitle>
-      <Body>{entry.description}</Body>
+      {entry.description.map((paragraph, index) => (
+        <Body key={index}>{paragraph}</Body>
+      ))}
       {entry.link && <Link url={entry.link} />}
       <CVEntryStack stack={entry.technologies} />
     </Container>

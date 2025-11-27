@@ -10,19 +10,19 @@ export const Nav = () => {
   return (
     <NavBar>
       <NavLinks>
-        <NavLink to="/" data-active={isActive("/")}>
+        <NavLink to="/" $active={isActive("/")}>
           Home
         </NavLink>
-        <NavLink to="/cv" data-active={isActive("/cv")}>
+        <NavLink to="/cv" $active={isActive("/cv")}>
           CV
         </NavLink>
-        <NavLink to="/lab" data-active={isActive("/lab")}>
+        <NavLink to="/lab" $active={isActive("/lab")}>
           Lab
         </NavLink>
-        <NavLink to="/contact" data-active={isActive("/contact")}>
+        <NavLink to="/contact" $active={isActive("/contact")}>
           Contact
         </NavLink>
-        <NavLink to="/about" data-active={isActive("/about")}>
+        <NavLink to="/about" $active={isActive("/about")}>
           About
         </NavLink>
       </NavLinks>
@@ -50,16 +50,13 @@ const NavLinks = styled("div")`
   gap: 1.5rem;
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled(Link)<{ $active: boolean }>`
   font-family: var(--font-inconsolata);
   font-size: ${(props) => props.theme.fontSizes.xl};
   letter-spacing: 0.08em;
   color: ${(props) => props.theme.palette.text};
   padding-bottom: 0.2rem;
   text-decoration: none;
-  border-bottom: none;
-
-  &[data-active="true"] {
-    border-bottom: 2px solid ${(props) => props.theme.palette.text};
-  }
+  border-bottom: ${(props) =>
+    props.$active ? `2px solid ${props.theme.palette.text}` : "none"};
 `;
