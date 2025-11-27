@@ -1,9 +1,11 @@
 import { styled } from "goober";
+import constructionImage from "../../../public/construction.jpg";
 
 export const Nux = () => {
   return (
     <Page>
       <Title>Work in Progress</Title>
+      <Image src={constructionImage} alt="Eiffel Tower under construction" />
     </Page>
   );
 };
@@ -22,6 +24,11 @@ const Page = styled("div")`
 `;
 
 const Title = styled("h1")`
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: ${(props) => props.theme.fontSizes.xl};
   margin-bottom: 1rem;
+`;
+
+const Image = styled("img")`
+  max-width: 500px;
+  height: auto;
 `;
