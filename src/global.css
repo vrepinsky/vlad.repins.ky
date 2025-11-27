@@ -1,6 +1,22 @@
+@font-face {
+  font-family: "Karrik";
+  src: url("./fonts/Karrik-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Karrik";
+  src: url("./fonts/Karrik-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+
 :root {
   --font-roboto: "Roboto", sans-serif;
-  --font-inconsolata: "Inconsolata", monospace;
+  --font-inconsolata: "Karrik", sans-serif;
 }
 
 * {
