@@ -50,5 +50,4 @@ const TitleWrapper = styled("div")`
   max-width: 600px;
   text-align: left;
   margin-bottom: 2rem;
-  margin-left: 2rem;
 `;
