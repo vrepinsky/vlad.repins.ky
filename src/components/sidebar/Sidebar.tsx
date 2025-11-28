@@ -28,12 +28,6 @@ const SidebarContainer = styled("nav")`
   top: 0;
   z-index: 100;
 
-  /* Extend into safe areas and adjust padding */
-  @supports (padding: env(safe-area-inset-top)) {
-    padding-top: calc(8rem + env(safe-area-inset-top));
-    padding-left: calc(8rem + env(safe-area-inset-left));
-  }
-
   @media (max-width: 768px) {
     display: none;
   }

@@ -91,20 +91,7 @@ const BlurContainer = styled("div")<{
   $height: number;
 }>`
   position: fixed;
-  ${(props) =>
-    props.$direction === "top"
-      ? `
-        top: 0;
-        /* Extend blur up into the safe area (iOS notch/status bar) */
-        padding-top: env(safe-area-inset-top);
-        margin-top: calc(-1 * env(safe-area-inset-top));
-      `
-      : `
-        bottom: 0;
-        /* Extend blur down into the safe area (iOS home indicator) */
-        padding-bottom: env(safe-area-inset-bottom);
-        margin-bottom: calc(-1 * env(safe-area-inset-bottom));
-      `}
+  ${(props) => (props.$direction === "top" ? "top: 0;" : "bottom: 0;")}
   left: 260px;
   right: 15px;
   height: ${(props) => props.$height}px;

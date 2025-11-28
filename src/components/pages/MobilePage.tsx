@@ -38,11 +38,22 @@ const Page = styled("div")`
   overflow-y: auto;
   display: flex;
   justify-content: center;
+  position: relative;
 
-  /* Adjust height to account for safe areas */
-  @supports (padding: env(safe-area-inset-top)) {
-    min-height: calc(
-      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+  /* Fade effect at top only */
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    pointer-events: none;
+    z-index: 10;
+    background: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.palette.bg} 0%,
+      transparent 100%
     );
   }
 `;
