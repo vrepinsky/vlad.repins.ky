@@ -15,29 +15,34 @@ export const SidebarNavLink = ({
   onClick,
 }: SidebarNavLinkProps) => {
   return (
-    <StyledLink to={path} $active={isActive} onClick={onClick}>
-      {label}
-    </StyledLink>
+    <LinkContainer $active={isActive}>
+      <StyledLink to={path} onClick={onClick}>
+        {label}
+      </StyledLink>
+    </LinkContainer>
   );
 };
 
-const StyledLink = styled(Link)<{ $active: boolean }>`
-  font-family: var(--font-inconsolata);
-  font-size: ${(props) => props.theme.fontSizes.md};
-  letter-spacing: 0.08em;
-  color: ${(props) =>
+const LinkContainer = styled("div")<{ $active: boolean }>`
+  --link-color: ${(props) =>
     props.$active ? props.theme.palette.text : props.theme.palette.textMuted};
-  padding: 0.1rem 0;
-  text-decoration: none;
   transform: ${(props) =>
     props.$active ? "translateX(5px)" : "translateX(0)"};
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+  transition: transform 0.2s ease;
 
   &:hover {
     transform: translateX(5px);
-    color: ${(props) => props.theme.palette.text};
+    --link-color: ${(props) => props.theme.palette.text};
   }
 `;
 
+const StyledLink = styled(Link)`
+  font-family: var(--font-inconsolata);
+  font-size: ${(props) => props.theme.fontSizes.md};
+  letter-spacing: 0.08em;
+  color: var(--link-color);
+  padding: 0.1rem 0;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s ease;
+`;

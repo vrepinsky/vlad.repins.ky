@@ -30,7 +30,10 @@ export const SidebarNavExpandable = ({
       <ChildrenContainer $expanded={isExpanded}>
         <ChildrenInner>
           {children.map((child) => (
-            <ChildLink key={child.hash} onClick={() => onChildClick(child.hash)}>
+            <ChildLink
+              key={child.hash}
+              onClick={() => onChildClick(child.hash)}
+            >
               {child.label}
             </ChildLink>
           ))}
@@ -91,4 +94,3 @@ const ChildLink = styled("div")`
     color: ${(props) => props.theme.palette.text};
   }
 `;
-
