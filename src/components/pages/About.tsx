@@ -17,12 +17,10 @@ export const About = () => {
           <AboutBundleStats />
         </Section>
 
-        {/* Packages Section */}
         <Section>
           <AboutDependencies />
         </Section>
 
-        {/* Credits Section */}
         <Section>
           <Heading>Credits & Thanks</Heading>
           <Body>
@@ -31,7 +29,6 @@ export const About = () => {
           </Body>
         </Section>
 
-        {/* Signature Section */}
         <Section>
           <Subtitle>
             Built and designed with ¯\(ツ)/¯ in Amsterdam Slotervaart © Vlad
