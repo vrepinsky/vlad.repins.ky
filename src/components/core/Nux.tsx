@@ -33,7 +33,6 @@ const Container = styled("div")`
 `;
 
 const TitleWrapper = styled("div")`
-  margin-top: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
