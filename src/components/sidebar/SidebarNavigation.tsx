@@ -20,6 +20,7 @@ const navItems: NavItem[] = [
       { label: "Education", hash: "education" },
     ],
   },
+  { label: "Now", path: "/now" },
   { label: "Lab", path: "/lab" },
   { label: "About", path: "/about" },
 ];

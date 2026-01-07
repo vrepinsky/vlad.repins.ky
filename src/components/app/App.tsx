@@ -10,6 +10,7 @@ import { styled } from "goober";
 import { Route, Router, useLocation } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
 import { About } from "../pages/About";
+import { Now } from "../pages/Now";
 
 const Routes = () => {
   const [location] = useLocation();
@@ -18,6 +19,7 @@ const Routes = () => {
     <RouteTransition key={location}>
       <Route path="/" component={Home} />
       <Route path="/cv" component={CV} />
+      <Route path="/now" component={Now} />
       <Route path="/lab" component={Lab} />
       <Route path="/about" component={About} />
     </RouteTransition>
