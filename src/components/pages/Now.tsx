@@ -1,6 +1,7 @@
 import { styled } from "goober";
+import { Link } from "../core/Link";
 import { Page } from "../core/Page";
-import { Title } from "../core/Typography";
+import { Body, Title } from "../core/Typography";
 
 export const Now = () => {
   return (
@@ -9,6 +10,12 @@ export const Now = () => {
         <TitleWrapper>
           <Title>Now</Title>
         </TitleWrapper>
+        <Body>
+          A now page is a page on a personal website that tells you what a
+          person is focused on at the current time, day, or very recently.
+          Ephemeral story posts are often about what someone is doing now{" "}
+          <Link url="https://sive.rs/nowff" label="Now Page Movement" />
+        </Body>
       </Content>
     </Page>
   );
