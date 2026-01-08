@@ -1,9 +1,13 @@
 import { styled } from "goober";
 
-export const Link = ({ url }: { url: string }) => {
+interface LinkProps {
+  url: string;
+  label?: string;
+}
+export const Link = ({ url, label }: LinkProps) => {
   return (
     <LinkWrapper href={url} target="_blank" rel="noopener noreferrer">
-      <span>🔗</span> {url}
+      <span>🔗</span> {label || url}
     </LinkWrapper>
   );
 };
