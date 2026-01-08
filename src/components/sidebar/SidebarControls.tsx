@@ -5,9 +5,6 @@ import { EmojiButton } from "../core/EmojiButton";
 export const SidebarControls = () => {
   return (
     <SidebarControlsContainer>
-      <EmojiButton onClick={() => {}} disabled={true}>
-        ⌨️
-      </EmojiButton>
       <SidebarThemeToggle />
     </SidebarControlsContainer>
   );
