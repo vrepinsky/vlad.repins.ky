@@ -65,14 +65,13 @@ const PostContent = styled("div")`
 
 const ImagesContainer = styled("div")`
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 1rem;
 `;
 
 const PostImage = styled("img")`
-  width: 100%;
-  max-width: 100%;
+  flex: 1 1 calc(33.333% - 7px);
+  min-width: 0;
   height: auto;
-  border-radius: 4px;
 `;
