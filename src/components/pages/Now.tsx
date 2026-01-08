@@ -30,6 +30,7 @@ export const Now = () => {
               date={post.date}
               content={post.content}
               images={post.images}
+              links={post.links}
             />
           ))}
         </PostsSection>

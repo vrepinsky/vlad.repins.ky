@@ -1,5 +1,7 @@
-import { useImageViewer } from "../../hooks/useImageViewer";
 import { styled } from "goober";
+import { useImageViewer } from "../../hooks/useImageViewer";
+import type { NowPostLink } from "../../types/now.types";
+import { Link } from "../core/Link";
 import { Body, Heading, Subtitle } from "../core/Typography";
 
 interface NowPagePostProps {
@@ -7,6 +9,7 @@ interface NowPagePostProps {
   date: string;
   content: string[];
   images?: string[];
+  links?: NowPostLink[];
 }
 
 export const NowPagePost = ({
@@ -14,6 +17,7 @@ export const NowPagePost = ({
   date,
   content,
   images = [],
+  links = [],
 }: NowPagePostProps) => {
   const { openViewer } = useImageViewer();
 
@@ -41,6 +45,14 @@ export const NowPagePost = ({
             />
           ))}
         </ImagesContainer>
+      )}
+
+      {links?.length > 0 && (
+        <LinksContainer>
+          {links.map((link, index) => (
+            <Link key={index} url={link.url} label={link.label} />
+          ))}
+        </LinksContainer>
       )}
     </PostContainer>
   );
@@ -84,4 +96,10 @@ const PostImage = styled("img")`
   &:hover {
     opacity: 0.8;
   }
+`;
+
+const LinksContainer = styled("div")`
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
 `;

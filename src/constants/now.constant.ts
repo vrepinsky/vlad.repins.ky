@@ -18,6 +18,7 @@ export const NOW_POSTS: NowPost[] = [
       "Note to self - going offline for so long makes it hard to get back into the flow of things. Need to find a way to stay connected and productive without being online all the time.",
     ],
     images: [uganda1, uganda2, uganda3, uganda4, uganda5],
+    links: [],
   },
   {
     title: "Running LLMs in the browser",
@@ -30,5 +31,15 @@ export const NOW_POSTS: NowPost[] = [
       "Local, private models FTW! 🚀",
     ],
     images: [],
+    links: [
+      {
+        url: "https://github.com/vladrepinskiy/codesherpa-local",
+        label: "Codesherpa Local",
+      },
+      {
+        url: "https://github.com/mlc-ai/web-llm",
+        label: "WebLLM",
+      },
+    ],
   },
 ];

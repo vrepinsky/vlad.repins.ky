@@ -3,4 +3,10 @@ export type NowPost = {
   date: string;
   content: string[];
   images?: string[];
+  links?: NowPostLink[];
+};
+
+export type NowPostLink = {
+  url: string;
+  label: string;
 };
