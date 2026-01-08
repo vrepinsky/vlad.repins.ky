@@ -15,6 +15,7 @@ export const NOW_POSTS: NowPost[] = [
       "Still amazed by our first venture into Africa. No matter how many times I've seen it on the pictures, it's still a surreal experience to be there in person.",
       "A roadtrip all around Uganda was a great way to see the entire spectrum, from the remote mountain regions to savannahs and the beautiful lakes. The amount of wildlife and natural beauty is something that's hard to describe.",
       "Poverty and inequality are starkly visible, and it's a good wake up call to the reality of the world.",
+      "Note to self - going offline for so long makes it hard to get back into the flow of things. Need to find a way to stay connected and productive without being online all the time.",
     ],
     images: [uganda1, uganda2, uganda3, uganda4, uganda5],
   },
