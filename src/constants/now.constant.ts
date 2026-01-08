@@ -18,4 +18,16 @@ export const NOW_POSTS: NowPost[] = [
     ],
     images: [uganda1, uganda2, uganda3, uganda4, uganda5],
   },
+  {
+    title: "Running LLMs in the browser",
+    date: "December 2025",
+    content: [
+      "Working on a couple of small projects to run LLMs in the browser using web-llm framework. Was really curious how far you can push it and how this impacts performance and overall UX.",
+      "One of the projects is Codesherpa Local - a rendition of a pet project I've built earlier using standard OpenAI API, but this time with a completely local-first approach using web-llm and PGLite.",
+      "Conclusions so far - you can load up about a Gygabite of model weights to get reasonable performance for simple completions. What's a bit of a bummer - any model below 3-4 GBs is unable to handle structured outputs and tool calls. For a project like Codesherpa, this is a dealbreaker.",
+      "Want to continue experimenting with smaller size models for simpler but useful tasks that do not require structured output or look into ways of building some validation and reliability around the model outputs.",
+      "Local, private models FTW! 🚀",
+    ],
+    images: [],
+  },
 ];
