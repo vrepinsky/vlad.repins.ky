@@ -65,6 +65,7 @@ const ContentArea = styled("div")`
   flex: 1;
   height: 100vh;
   overflow-y: auto;
+  scrollbar-gutter: stable;
   position: relative;
   display: flex;
   flex-direction: column;
