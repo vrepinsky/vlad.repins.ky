@@ -17,7 +17,6 @@ const PageContainer = styled("div")`
   padding-right: 10vh;
   background: ${(props) => props.theme.palette.bg};
   color: ${(props) => props.theme.palette.text};
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
