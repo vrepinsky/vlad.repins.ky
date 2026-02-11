@@ -1,16 +1,17 @@
 import { EdgeBlur } from "@/components/core/EdgeBlur";
 import { RouteTransition } from "@/components/core/RouteTransition";
+import { About } from "@/components/pages/About";
 import { CV } from "@/components/pages/CV";
 import { Home } from "@/components/pages/Home";
 import { Lab } from "@/components/pages/Lab";
 import { MobilePage } from "@/components/pages/MobilePage";
+import { Now } from "@/components/pages/Now";
+import { Wishlist } from "@/components/pages/Wishlist";
 import { Sidebar } from "@/components/sidebar/Sidebar";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { styled } from "goober";
 import { Route, Router, useLocation } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
-import { About } from "../pages/About";
-import { Now } from "../pages/Now";
 
 const Routes = () => {
   const [location] = useLocation();
@@ -22,6 +23,7 @@ const Routes = () => {
       <Route path="/now" component={Now} />
       <Route path="/lab" component={Lab} />
       <Route path="/about" component={About} />
+      <Route path="/wishlist" component={Wishlist} />
     </RouteTransition>
   );
 };
