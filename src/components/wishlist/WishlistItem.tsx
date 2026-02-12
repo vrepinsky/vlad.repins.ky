@@ -5,43 +5,53 @@ import { Body } from "../core/Typography";
 interface WishlistItemProps {
   title: string;
   link?: string;
-  isMobile?: boolean;
+  price?: number;
 }
 
-export const WishlistItem = ({ title, link, isMobile }: WishlistItemProps) => {
+export const WishlistItem = ({ title, link, price }: WishlistItemProps) => {
+  const formatPrice = (value: number) =>
+    new Intl.NumberFormat("nl-NL", {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+
   return (
-    <Container $isMobile={isMobile}>
-      <TitleCell $isMobile={isMobile}>
-        <Body>{title}</Body>
-      </TitleCell>
-      {link && (
-        <LinkCell>
-          <Link url={link} />
-        </LinkCell>
-      )}
+    <Container>
+      <LeftCell>
+        {link ? <Link url={link} label={title} /> : <Body>{title}</Body>}
+      </LeftCell>
+      <PriceCell>
+        <Price>{price != null ? formatPrice(price) : "?"}</Price>
+      </PriceCell>
     </Container>
   );
 };
 
-const Container = styled("div")<{ $isMobile?: boolean }>`
+const Container = styled("div")`
   width: 100%;
   min-width: 0;
   display: flex;
-  flex-direction: ${(props) => (props.$isMobile ? "column" : "row")};
+  flex-direction: row;
   justify-content: space-between;
-  align-items: ${(props) => (props.$isMobile ? "flex-start" : "center")};
-  gap: ${(props) => (props.$isMobile ? "0.25rem" : "1rem")};
+  align-items: baseline;
+  gap: 1rem;
 `;
 
-const TitleCell = styled("div")<{ $isMobile?: boolean }>`
+const LeftCell = styled("div")`
   min-width: 0;
-  ${(props) => !props.$isMobile && "flex: 1;"}
+  flex: 1;
   overflow-wrap: break-word;
   word-break: break-word;
 `;
 
-const LinkCell = styled("div")`
-  min-width: 0;
-  overflow-wrap: break-word;
-  word-break: break-word;
+const PriceCell = styled("div")`
+  flex-shrink: 0;
+`;
+
+const Price = styled("span")`
+  font-size: ${(props) => props.theme.fontSizes.sm};
+  color: ${(props) => props.theme.palette.textMuted};
+  white-space: nowrap;
 `;

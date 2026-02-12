@@ -43,7 +43,6 @@ export const App = () => {
         )}
         {isMobile && hashLocation === "/wishlist" && (
           <>
-            <EdgeBlur direction="top" height={50} />
             <MobileWishlistScroll>
               <Wishlist />
             </MobileWishlistScroll>
@@ -79,6 +78,23 @@ const MobileWishlistScroll = styled("div")`
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: ${(props) => props.theme.palette.bg};
+
+  /* Fade effect at top only */
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    pointer-events: none;
+    z-index: 10;
+    background: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.palette.bg} 0%,
+      transparent 100%
+    );
+  }
 `;
 
 const ContentArea = styled("div")`
