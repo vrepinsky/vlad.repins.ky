@@ -14,9 +14,12 @@ export const Link = ({ url, label }: LinkProps) => {
 
 const LinkWrapper = styled("a")`
   width: fit-content;
+  max-width: 100%;
   font-size: ${(props) => props.theme.fontSizes.md};
   color: ${(props) => props.theme.palette.text};
   opacity: 0.7;
+  overflow-wrap: break-word;
+  word-break: break-word;
   transition:
     opacity 0.2s ease,
     transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);

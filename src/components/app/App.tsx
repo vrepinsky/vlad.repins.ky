@@ -30,13 +30,23 @@ const Routes = () => {
 
 export const App = () => {
   const isMobile = useIsMobile();
+  const [hashLocation] = useHashLocation();
 
   return (
     <Router hook={useHashLocation}>
       <AppContainer>
-        {isMobile && (
+        {isMobile && hashLocation !== "/wishlist" && (
           <>
             <MobilePage />
+            <EdgeBlur direction="bottom" height={50} />
+          </>
+        )}
+        {isMobile && hashLocation === "/wishlist" && (
+          <>
+            <EdgeBlur direction="top" height={50} />
+            <MobileWishlistScroll>
+              <Wishlist />
+            </MobileWishlistScroll>
             <EdgeBlur direction="bottom" height={50} />
           </>
         )}
@@ -60,6 +70,14 @@ const AppContainer = styled("div")`
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  background: ${(props) => props.theme.palette.bg};
+`;
+
+const MobileWishlistScroll = styled("div")`
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background: ${(props) => props.theme.palette.bg};
 `;
 
