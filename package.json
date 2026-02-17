@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun --hot ./src/index.html",
-    "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify",
+    "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify && cp public/robots.txt public/sitemap.xml dist/",
     "lint": "bun x eslint . --ext .ts,.tsx,.js,.jsx --report-unused-disable-directives",
     "lint:fix": "bun x eslint . --ext .ts,.tsx,.js,.jsx --report-unused-disable-directives --fix",
     "format": "bun x prettier . --write",
