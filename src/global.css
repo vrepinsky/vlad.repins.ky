@@ -28,6 +28,7 @@
 html,
 body {
   height: 100vh;
+  height: 100dvh; /* Better on iOS: avoids chrome jump when address bar shows/hides */
   overflow: hidden;
 }
 
@@ -35,10 +36,13 @@ body {
   font-family: var(--font-roboto);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Respect iPhone notch and home indicator when using viewport-fit=cover */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  -webkit-tap-highlight-color: transparent; /* Cleaner tap feedback on iOS */
 }
 
 #root {
-  height: 100vh;
+  height: 100%; /* Fill body content box (accounts for safe-area padding) */
   display: flex;
   flex-direction: column;
 }
