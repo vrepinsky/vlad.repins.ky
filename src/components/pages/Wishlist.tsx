@@ -1,12 +1,16 @@
-import { WISHLIST_SECTIONS } from "@/constants/wishlist.constant";
+import { WISHLIST_ITEMS } from "@/constants/wishlist.constant";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { styled } from "goober";
 import { Page } from "../core/Page";
-import { Heading, Title } from "../core/Typography";
+import { Title } from "../core/Typography";
 import { WishlistItem } from "../wishlist/WishlistItem";
 
 export const Wishlist = () => {
   const isMobile = useIsMobile();
+
+  const wishlistItemsSortedByPrice = WISHLIST_ITEMS.sort((a, b) => {
+    return (a.price ?? 0) - (b.price ?? 0);
+  });
 
   return (
     <Page>
@@ -14,21 +18,17 @@ export const Wishlist = () => {
         <TitleWrapper>
           <Title>🤫 Wishlist</Title>
         </TitleWrapper>
-        {WISHLIST_SECTIONS.map((section) => (
-          <Section key={section.heading}>
-            <HeadingWrapper>
-              <Heading>{section.heading}</Heading>
-            </HeadingWrapper>
-            {section.items.map((item) => (
-              <WishlistItem
-                key={item.title}
-                title={item.title}
-                link={item.link}
-                price={item.price}
-              />
-            ))}
-          </Section>
-        ))}
+        <WishlistItemList>
+          {wishlistItemsSortedByPrice.map((item) => (
+            <WishlistItem
+              key={item.title}
+              title={item.title}
+              link={item.link}
+              price={item.price}
+              category={item.category}
+            />
+          ))}
+        </WishlistItemList>
       </Content>
     </Page>
   );
@@ -47,11 +47,7 @@ const TitleWrapper = styled("div")`
   margin-bottom: 1rem;
 `;
 
-const HeadingWrapper = styled("div")`
-  margin-bottom: 1rem;
-`;
-
-const Section = styled("div")`
+const WishlistItemList = styled("div")`
   width: 100%;
   min-width: 0;
   display: flex;

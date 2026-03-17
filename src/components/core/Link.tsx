@@ -3,11 +3,12 @@ import { styled } from "goober";
 interface LinkProps {
   url: string;
   label?: string;
+  showIcon?: boolean;
 }
-export const Link = ({ url, label }: LinkProps) => {
+export const Link = ({ url, label, showIcon = false }: LinkProps) => {
   return (
     <LinkWrapper href={url} target="_blank" rel="noopener noreferrer">
-      <span>🔗</span> {label || url}
+      {showIcon && <span>🔗</span>} {label || url}
     </LinkWrapper>
   );
 };
