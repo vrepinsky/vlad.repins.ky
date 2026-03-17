@@ -10,8 +10,35 @@ export const WISHLIST_SECTIONS: WishlistSection[] = [
         price: 10,
       },
       {
+        title: "Uniqlo U Crew Neck T-Shirt. Preferrably white.",
+        link: "https://www.uniqlo.com/nl/en/contents/feature/masterpiece/product/u-crew-neck-t-shirt/",
+        price: 15,
+      },
+      {
         title: "Drinks from Apfelweinkontor",
         link: "https://www.apfelweinkontor.com/online-shop/",
+        price: 20,
+      },
+      {
+        title: "D'Cruze – Are We In / Heaven - Vinyl",
+        link: "https://www.discogs.com/release/60408-DCruze-Are-We-In-Heaven",
+        price: 20,
+      },
+      {
+        title: "Jazz Orkestar Radio-Televizije Beograd – CD or Vinyl",
+        link: "https://www.discogs.com/master/484874-Jazz-Orkestar-Radio-Televizije-Beograd-Jazz-Orkestar-Radio-Televizije-Beograd",
+        price: 20,
+      },
+      // You & The Explosion Band = ユー&エクスプロージョン・バンド*
+      {
+        title: "Primer – Indulge / The Silver Lining – Vinyl",
+        link: "https://www.discogs.com/release/214210-Primer-Indulge-The-Silver-Lining",
+        price: 20,
+      },
+      {
+        title:
+          "You & The Explosion Band = ユー&エクスプロージョン・バンド – Vinyl",
+        link: "https://www.discogs.com/release/791533-You-The-Explosion-Band-%E3%83%A6%E3%83%BC%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%90%E3%83%B3%E3%83%89-Lupin-The-3rd-Original-Soundtrack-",
         price: 20,
       },
     ],
@@ -25,18 +52,8 @@ export const WISHLIST_SECTIONS: WishlistSection[] = [
         price: 25,
       },
       {
-        title: "Collective Grappling Shorts",
-        link: "https://moribound.com/products/jiu-jitsu-collective-grappling-shorts",
-        price: 40,
-      },
-      {
         title: "Mezcal Sacrificio Reposado",
         link: "https://www.totalwine.com/spirits/mezcal/mezcal-sacrificio-reposado/p/141213750",
-        price: 40,
-      },
-      {
-        title: "Kinnie Zero",
-        link: "https://maltaladen.de/product/24-kinnie-zero-pet-softdrink/",
         price: 40,
       },
       {
@@ -55,16 +72,6 @@ export const WISHLIST_SECTIONS: WishlistSection[] = [
         price: 70,
       },
       {
-        title: "England jacket Union Jack Plaid Zipup",
-        link: "https://shopjogabonito.com/products/union-jack-plaid-zipup",
-        price: 100,
-      },
-      {
-        title: "Jackets, shirts and more from Universal Surplus",
-        link: "https://universal-surplus.com/products/ffa-newyork-jacket",
-        price: 100,
-      },
-      {
         title: "Shyne Hoodie",
         link: "https://shyneteam.com/collections/shyne",
         price: 129,
@@ -75,19 +82,20 @@ export const WISHLIST_SECTIONS: WishlistSection[] = [
         price: 150,
       },
       {
-        title: "Apple iMac G4 Sunflower 17 inch",
-        link: "https://www.marktplaats.nl/v/computers-en-software/apple-desktops/m2363904367-apple-imac-g4-sunflower-17-inch-werkend-designklassieker",
-        price: 150,
+        title: "Teenage Engineering Case",
+        link: "https://teenage.engineering/store/computer-1-aluminum",
+        price: 160,
       },
       {
-        title: "Amber Eau de Parfum Soie Malaquais",
-        link: "https://www.driesvannoten.com/en-de/products/001-099009",
-        price: 300,
+        title: "Xiaomi Smart Air Purifier 4",
+        link: "https://www.mi.com/nl/product/xiaomi-smart-air-purifier-4/",
+        price: 160,
+      },
+      {
+        title: "CP Company jackets and tops",
+        link: "https://www.cpcompany.com/en-nl/white-flatt-nylon-goggle-jacket/20CMOW013A005991G114.html?dwvar_20CMOW013A005991G114_color=114&quantity=1",
+        price: 600,
       },
     ],
-  },
-  {
-    heading: "Suggestions du chef",
-    items: [{ title: "Gotthard Base Tunnel Tour" }],
   },
 ];
