@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { SOCIAL_LINKS } from "@/constants/site.constant";
+---
+
+<BaseLayout title="Links — vlad.repins.ky">
+  <section class="page page--centered">
+    <div class="content-column">
+      <div class="section-title">
+        <h1 class="title">Links</h1>
+      </div>
+
+      <div class="links-page-list">
+        {
+          SOCIAL_LINKS.map((link) => (
+            <a
+              class="links-page-link"
+              href={link.href}
+              target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

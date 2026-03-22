@@ -23,6 +23,136 @@ const themeScript = `
     root.dataset.theme = theme;
   })();
 `;
+
+const criticalShellCss = `
+  :root {
+    --sidebar-basis: 30%;
+    --shell-block-padding: clamp(4rem, 10vh, 8rem);
+    --page-inline-padding: clamp(2rem, 6vw, 6rem);
+    --page-edge-offset: clamp(2rem, 5vh, 3.5rem);
+    --safe-top: env(safe-area-inset-top);
+    --safe-right: env(safe-area-inset-right);
+    --safe-bottom: env(safe-area-inset-bottom);
+    --safe-left: env(safe-area-inset-left);
+    --color-bg: #ffffff;
+    --color-text: #1a1a1a;
+    --color-text-muted: #808080;
+  }
+
+  :root[data-theme="dark"] {
+    --color-bg: #1a1a1a;
+    --color-text: #f5f5f5;
+    --color-text-muted: #999999;
+  }
+
+  html,
+  body {
+    height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--color-bg);
+  }
+
+  body {
+    margin: 0;
+    color: var(--color-text);
+    padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
+    overflow: hidden;
+  }
+
+  .site-shell {
+    display: flex;
+    height: calc(100vh - var(--safe-top) - var(--safe-bottom));
+    height: calc(100dvh - var(--safe-top) - var(--safe-bottom));
+    background: var(--color-bg);
+  }
+
+  .sidebar {
+    flex: 0 0 var(--sidebar-basis);
+    max-width: var(--sidebar-basis);
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--shell-block-padding) clamp(2.5rem, 6vw, 6rem);
+    background: var(--color-bg);
+  }
+
+  .sidebar__nav {
+    width: fit-content;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .site-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    display: flex;
+  }
+
+  .page {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: calc(var(--shell-block-padding) + var(--page-edge-offset))
+      var(--page-inline-padding);
+  }
+
+  .page--home {
+    justify-content: center;
+  }
+
+  .page--centered {
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    body {
+      overflow: auto;
+    }
+
+    .site-shell {
+      display: block;
+      height: auto;
+      min-height: calc(100vh - var(--safe-top) - var(--safe-bottom));
+      min-height: calc(100dvh - var(--safe-top) - var(--safe-bottom));
+    }
+
+    .sidebar,
+    .site-content {
+      display: block;
+      height: auto;
+      max-width: none;
+      overflow: visible;
+    }
+
+    .sidebar {
+      padding: 2.5rem 1.5rem 1rem;
+    }
+
+    .sidebar__nav {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      justify-content: flex-start;
+    }
+
+    .page {
+      min-height: auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+  }
+`;
 ---
 
 <!doctype html>
@@ -49,6 +179,7 @@ const themeScript = `
     <Font cssVariable="--font-geist-mono" preload />
     <Font cssVariable="--font-karrik" preload />
     <script is:inline set:html={themeScript}></script>
+    <style is:inline set:html={criticalShellCss}></style>
   </head>
   <body>
     <div class="site-shell">

@@ -1,5 +1,5 @@
 ---
-import { NAV_ITEMS, SOCIAL_LINKS } from "@/constants/site.constant";
+import { NAV_ITEMS } from "@/constants/site.constant";
 
 interface Props {
   pathname: string;
@@ -11,31 +11,21 @@ const isActive = (href: string) => pathname === href;
 ---
 
 <nav class="sidebar">
-  <div class="sidebar__section sidebar__section--top">
-    <div class="sidebar__nav">
-      {
-        NAV_ITEMS.map((item) => (
-          <a class:list={["sidebar__nav-link", { "is-active": isActive(item.href) }]} href={item.href}>
-            {item.label}
-          </a>
-        ))
-      }
-    </div>
-
-    <div class="sidebar__socials">
-      {
-        SOCIAL_LINKS.map((link) => (
-          <a class="sidebar__social-link" href={link.href} target={link.href.startsWith("mailto:") ? undefined : "_blank"} rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}>
-            {link.label}
-          </a>
-        ))
-      }
-    </div>
-  </div>
-
-  <div class="sidebar__controls">
-    <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
-      <span data-theme-icon>🌞</span>
+  <div class="sidebar__nav">
+    {
+      NAV_ITEMS.map((item) => (
+        <a class:list={["sidebar__nav-link", { "is-active": isActive(item.href) }]} href={item.href}>
+          {item.label}
+        </a>
+      ))
+    }
+    <button
+      class="sidebar__nav-link sidebar__nav-link--button"
+      type="button"
+      aria-label="Toggle theme"
+      data-theme-toggle
+    >
+      Theme
     </button>
   </div>
 </nav>

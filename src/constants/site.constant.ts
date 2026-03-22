@@ -39,8 +39,8 @@ export const NAV_ITEMS = [
     label: "Now",
   },
   {
-    href: "/lab/",
-    label: "Lab",
+    href: "/links/",
+    label: "Links",
   },
   {
     href: "/about/",
