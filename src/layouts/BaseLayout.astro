@@ -115,6 +115,12 @@ const criticalShellCss = `
     justify-content: center;
   }
 
+  .page--cv {
+    padding-bottom: calc(
+      var(--shell-block-padding) + var(--page-edge-offset) + 8rem
+    );
+  }
+
   @media (max-width: 900px) {
     body {
       overflow: auto;
@@ -188,7 +194,7 @@ const criticalShellCss = `
         <slot />
       </main>
       <EdgeBlur direction="top" />
-      <EdgeBlur direction="bottom" />
+      <EdgeBlur direction="bottom" height={56} />
     </div>
 
     <script src="../scripts/theme-toggle.ts"></script>

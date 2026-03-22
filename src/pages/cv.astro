@@ -5,7 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="CV — vlad.repins.ky">
-  <section class="page">
+  <section class="page page--cv">
     <section class="content-section" id="work-experience">
       <div class="section-title">
         <h1 class="title">Work</h1>
@@ -23,5 +23,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         {EDUCATION.map((entry) => <CVEntry entry={entry} />)}
       </div>
     </section>
+
+    <div class="page-bottom-spacer" aria-hidden="true"></div>
   </section>
 </BaseLayout>
