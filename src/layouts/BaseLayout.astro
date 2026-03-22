@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import EdgeBlur from "@/components/EdgeBlur.astro";
 import SiteSidebar from "@/components/SiteSidebar.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/constants/site.constant";
@@ -29,20 +30,6 @@ const themeScript = `
   <head>
     <meta charset="UTF-8" />
     <link
-      rel="preload"
-      href="/_astro/Karrik-Regular.B_oc4L_E.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/_astro/Karrik-Italic.BAxHorvI.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
     />
@@ -59,6 +46,7 @@ const themeScript = `
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
+    <Font cssVariable="--font-karrik" preload />
     <script is:inline set:html={themeScript}></script>
   </head>
   <body>
@@ -80,19 +68,28 @@ const themeScript = `
         });
       };
 
-      const currentTheme =
-        document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-      updateThemeUI(currentTheme);
+      const initThemeToggle = () => {
+        const currentTheme =
+          document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+        updateThemeUI(currentTheme);
 
-      document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-        button.addEventListener("click", () => {
-          const nextTheme =
-            document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+          if (button.dataset.themeBound === "true") return;
 
-          window.localStorage.setItem("theme", nextTheme);
-          updateThemeUI(nextTheme);
+          button.dataset.themeBound = "true";
+          button.addEventListener("click", () => {
+            const nextTheme =
+              document.documentElement.dataset.theme === "dark"
+                ? "light"
+                : "dark";
+
+            window.localStorage.setItem("theme", nextTheme);
+            updateThemeUI(nextTheme);
+          });
         });
-      });
+      };
+
+      initThemeToggle();
     </script>
   </body>
 </html>

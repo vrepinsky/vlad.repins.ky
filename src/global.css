@@ -1,27 +1,13 @@
-@font-face {
-  font-family: "Karrik";
-  src: url("./fonts/Karrik-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Karrik";
-  src: url("./fonts/Karrik-Italic.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-  font-style: italic;
-}
-
 :root {
   --font-body:
     ui-sans-serif,
     -apple-system,
     BlinkMacSystemFont,
+    "Helvetica Neue",
+    Helvetica,
     "Segoe UI",
     sans-serif;
-  --font-inconsolata: "Karrik", sans-serif;
+  --font-display: var(--font-karrik), var(--font-body);
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
@@ -82,7 +68,7 @@ h4,
 h5,
 h6,
 .monospace {
-  font-family: var(--font-inconsolata);
+  font-family: var(--font-display);
 }
 
 a {
@@ -150,7 +136,7 @@ body[data-image-viewer-open="true"] {
 .sidebar__social-link,
 .sidebar__child-link {
   width: fit-content;
-  font-family: var(--font-inconsolata);
+  font-family: var(--font-display);
   font-size: var(--font-size-md);
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
@@ -546,6 +532,11 @@ body[data-image-viewer-open="true"] {
 
 .desktop-only {
   display: flex;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
 }
 
 @media (max-width: 900px) {

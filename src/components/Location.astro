@@ -13,37 +13,43 @@
 </div>
 
 <script>
-  const locationRoot = document.querySelector("[data-location]");
+  const getWeatherEmoji = (code) => {
+    if (code === 0) return "☀️";
+    if (code <= 3) return "🌤️";
+    if (code <= 49) return "🌫️";
+    if (code <= 67) return "🌧️";
+    if (code <= 77) return "🌨️";
+    if (code <= 82) return "🌧️";
+    if (code <= 86) return "🌨️";
+    return "⛈️";
+  };
 
-  if (locationRoot) {
+  const getWeatherDescription = (code) => {
+    if (code === 0) return "Clear";
+    if (code <= 3) return "Partly Cloudy";
+    if (code <= 49) return "Foggy";
+    if (code <= 67) return "Rainy";
+    if (code <= 77) return "Snowy";
+    if (code <= 82) return "Rain Showers";
+    if (code <= 86) return "Snow Showers";
+    return "Thunderstorm";
+  };
+
+  const initLocation = () => {
+    const locationRoot = document.querySelector("[data-location]");
+
+    if (!locationRoot || locationRoot.dataset.locationBound === "true") return;
+
+    locationRoot.dataset.locationBound = "true";
+
     const timeNode = locationRoot.querySelector("[data-location-time]");
     const weatherNode = locationRoot.querySelector("[data-location-weather]");
-    const timeDivider = locationRoot.querySelector("[data-location-divider-time]");
+    const timeDivider = locationRoot.querySelector(
+      "[data-location-divider-time]",
+    );
     const weatherDivider = locationRoot.querySelector(
       "[data-location-divider-weather]",
     );
-
-    const getWeatherEmoji = (code) => {
-      if (code === 0) return "☀️";
-      if (code <= 3) return "🌤️";
-      if (code <= 49) return "🌫️";
-      if (code <= 67) return "🌧️";
-      if (code <= 77) return "🌨️";
-      if (code <= 82) return "🌧️";
-      if (code <= 86) return "🌨️";
-      return "⛈️";
-    };
-
-    const getWeatherDescription = (code) => {
-      if (code === 0) return "Clear";
-      if (code <= 3) return "Partly Cloudy";
-      if (code <= 49) return "Foggy";
-      if (code <= 67) return "Rainy";
-      if (code <= 77) return "Snowy";
-      if (code <= 82) return "Rain Showers";
-      if (code <= 86) return "Snow Showers";
-      return "Thunderstorm";
-    };
 
     const updateTime = () => {
       if (!timeNode || !timeDivider) return;
@@ -86,5 +92,7 @@
     updateWeather();
     window.setInterval(updateTime, 60000);
     window.setInterval(updateWeather, 600000);
-  }
+  };
+
+  initLocation();
 </script>
