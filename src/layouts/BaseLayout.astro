@@ -46,6 +46,7 @@ const themeScript = `
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
+    <Font cssVariable="--font-geist-mono" preload />
     <Font cssVariable="--font-karrik" preload />
     <script is:inline set:html={themeScript}></script>
   </head>
@@ -59,37 +60,6 @@ const themeScript = `
       <EdgeBlur direction="bottom" />
     </div>
 
-    <script>
-      const updateThemeUI = (theme) => {
-        document.documentElement.dataset.theme = theme;
-
-        document.querySelectorAll("[data-theme-icon]").forEach((node) => {
-          node.textContent = theme === "dark" ? "🌙" : "🌞";
-        });
-      };
-
-      const initThemeToggle = () => {
-        const currentTheme =
-          document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-        updateThemeUI(currentTheme);
-
-        document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-          if (button.dataset.themeBound === "true") return;
-
-          button.dataset.themeBound = "true";
-          button.addEventListener("click", () => {
-            const nextTheme =
-              document.documentElement.dataset.theme === "dark"
-                ? "light"
-                : "dark";
-
-            window.localStorage.setItem("theme", nextTheme);
-            updateThemeUI(nextTheme);
-          });
-        });
-      };
-
-      initThemeToggle();
-    </script>
+    <script src="../scripts/theme-toggle.ts"></script>
   </body>
 </html>

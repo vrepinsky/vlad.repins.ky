@@ -1,8 +1,6 @@
 :root {
-  --font-body:
-    ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-    Helvetica, "Segoe UI", sans-serif;
-  --font-display: var(--font-karrik), var(--font-body);
+  --font-body: var(--font-geist-mono), ui-monospace, "Cascadia Code", monospace;
+  --font-display: var(--font-karrik), ui-sans-serif, system-ui, sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
@@ -56,13 +54,16 @@ body {
 
 code,
 pre,
+.monospace {
+  font-family: var(--font-body);
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-.monospace {
+h6 {
   font-family: var(--font-display);
 }
 
@@ -106,6 +107,7 @@ body[data-image-viewer-open="true"] {
   position: sticky;
   top: var(--safe-top);
   z-index: 20;
+  font-family: var(--font-display);
 }
 
 .sidebar__section {
