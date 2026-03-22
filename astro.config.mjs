@@ -4,5 +4,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://vlad.repins.ky",
   output: "static",
+  build: {
+    inlineStyleSheets: "always",
+  },
   integrations: [sitemap()],
 });
