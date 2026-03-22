@@ -1,0 +1,26 @@
+---
+import NowPost from "@/components/NowPost.astro";
+import { NOW_POSTS } from "@/constants/now.constant";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Now — vlad.repins.ky">
+  <section class="page">
+    <div class="content-column">
+      <div class="section-title">
+        <h1 class="title">Now</h1>
+      </div>
+
+      <p class="body">
+        A now page is a page on a personal website that tells you what a person is focused on at the current time, day, or very recently. Ephemeral story posts are often about what someone is doing now
+        <a class="body-link" href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">
+          About the Now Page Movement
+        </a>
+      </p>
+
+      <div class="post-list">
+        {NOW_POSTS.map((post, index) => <NowPost post={post} group={`post-${index}`} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

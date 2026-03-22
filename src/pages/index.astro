@@ -1,0 +1,30 @@
+---
+import Location from "@/components/Location.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="page page--home">
+    <div class="content-column">
+      <div class="section-title">
+        <h1 class="title">Welcome Stranger!</h1>
+      </div>
+
+      <p class="body mobile-only">
+        You've landed on the simplified mobile version. Scroll down for CV, but visit the desktop version for full experience.
+      </p>
+
+      <div class="desktop-only hero-meta">
+        <p class="subtitle">
+          Влад Репинский <span class="hero-meta__phonetic">[vlæd rɛpɪnskɪy]</span>
+        </p>
+        <p class="subtitle">est. 1998 in Saint Petersburg, Russia</p>
+        <Location />
+      </div>
+
+      <p class="body">
+        I'm a product engineer with a track record from across the industry - from pure computer science research to self-managed startup projects. Strong engineering culture with a Master of Engineering degree from one of the leading European universities. Love working on relationships, processes and documentation. Since recently, addicted to shipping things.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

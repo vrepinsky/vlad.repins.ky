@@ -1,12 +1,5 @@
 import type { NowPost } from "../types/now.types";
 
-// Import all now page images - Bun will bundle these
-import uganda1 from "../../public/now/uganda-1.jpeg";
-import uganda2 from "../../public/now/uganda-2.jpeg";
-import uganda3 from "../../public/now/uganda-3.jpeg";
-import uganda4 from "../../public/now/uganda-4.jpeg";
-import uganda5 from "../../public/now/uganda-5.jpeg";
-
 export const NOW_POSTS: NowPost[] = [
   {
     title: "Camille",
@@ -35,7 +28,13 @@ export const NOW_POSTS: NowPost[] = [
       "Poverty and inequality are starkly visible, and it's a good wake up call to the reality of the world.",
       "Note to self - going offline for so long makes it hard to get back into the flow of things. Need to find a way to stay connected and productive without being online all the time.",
     ],
-    images: [uganda1, uganda2, uganda3, uganda4, uganda5],
+    images: [
+      "/now/uganda-1.jpeg",
+      "/now/uganda-2.jpeg",
+      "/now/uganda-3.jpeg",
+      "/now/uganda-4.jpeg",
+      "/now/uganda-5.jpeg",
+    ],
     links: [],
   },
   {

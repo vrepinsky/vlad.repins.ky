@@ -1,6 +1,6 @@
-# Personal Website with React and Bun
+# Personal Website with Astro
 
-This project is pared down to the bare minimum needed to build a static React site with Bun's bundler. Using goober for css-in-jss and wouter for super light client side routing.
+This project is a mostly static Astro site deployed to GitHub Pages. Pages render to HTML at build time, with small client-side scripts only for theme persistence, the location widget, and the image viewer on the now page.
 
 Install dependencies:
 
@@ -8,7 +8,7 @@ Install dependencies:
 bun install
 ```
 
-Start hot-reload dev preview (no API/server layer, just the bundled HTML):
+Start local development:
 
 ```bash
 bun run dev
@@ -33,6 +33,6 @@ bun run lint:fix
 bun run format
 ```
 
-## Now Page Posts
+## Content
 
-Images for now page posts must be imported in `src/constants/now.constant.ts` to be bundled by Bun. Add the import and include the filename in `NOW_IMAGE_MAP` to make it available for use in posts.
+Structured content lives in `src/constants/`. The Astro pages import these constants directly, so editing the CV, now page, or wishlist usually means changing only those files.

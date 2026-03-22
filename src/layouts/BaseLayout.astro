@@ -1,0 +1,84 @@
+---
+import EdgeBlur from "@/components/EdgeBlur.astro";
+import SiteSidebar from "@/components/SiteSidebar.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/constants/site.constant";
+import "@/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const pathname = Astro.url.pathname;
+const canonical = Astro.site ? new URL(pathname, Astro.site).toString() : undefined;
+
+const themeScript = `
+  (() => {
+    const root = document.documentElement;
+    const stored = window.localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
+    root.dataset.theme = theme;
+  })();
+`;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+    <script is:inline set:html={themeScript}></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <SiteSidebar pathname={pathname} />
+      <main class="site-content">
+        <slot />
+      </main>
+      <EdgeBlur direction="top" />
+      <EdgeBlur direction="bottom" />
+    </div>
+
+    <script>
+      const updateThemeUI = (theme) => {
+        document.documentElement.dataset.theme = theme;
+
+        document.querySelectorAll("[data-theme-icon]").forEach((node) => {
+          node.textContent = theme === "dark" ? "🌙" : "🌞";
+        });
+      };
+
+      const currentTheme =
+        document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+      updateThemeUI(currentTheme);
+
+      document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextTheme =
+            document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+
+          window.localStorage.setItem("theme", nextTheme);
+          updateThemeUI(nextTheme);
+        });
+      });
+    </script>
+  </body>
+</html>

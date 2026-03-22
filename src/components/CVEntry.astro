@@ -1,0 +1,35 @@
+---
+import type { CVEntry as CVEntryType } from "@/types/cv.types";
+
+interface Props {
+  entry: CVEntryType;
+}
+
+const { entry } = Astro.props;
+---
+
+<article class="cv-entry">
+  <h2 class="heading">{entry.title}, {entry.company}</h2>
+  <p class="subtitle">
+    {entry.startDate} - {entry.endDate} • {entry.location}
+  </p>
+
+  {entry.description.map((paragraph) => <p class="body">{paragraph}</p>)}
+
+  {entry.link && (
+    <a class="body-link" href={entry.link} target="_blank" rel="noopener noreferrer">
+      {entry.link}
+    </a>
+  )}
+
+  {
+    entry.stack && entry.stack.length > 0 && (
+      <details class="stack">
+        <summary class="stack__summary">Stack</summary>
+        <div class="stack__chips">
+          {entry.stack.map((item) => <span class="chip">{item}</span>)}
+        </div>
+      </details>
+    )
+  }
+</article>

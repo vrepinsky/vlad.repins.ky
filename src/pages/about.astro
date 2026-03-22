@@ -1,0 +1,54 @@
+---
+import pkg from "../../package.json";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const runtimeDependencies = Object.keys(pkg.dependencies).sort();
+const currentYear = new Date().getFullYear();
+---
+
+<BaseLayout title="About — vlad.repins.ky">
+  <section class="page">
+    <div class="content-column">
+      <div class="section-title">
+        <h1 class="title">About This Site</h1>
+      </div>
+
+      <section class="about-section">
+        <h2 class="heading">Bundle Statistics</h2>
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="about-stat__label">CSS Bundle Size:</span>
+            <span class="about-stat__value">9.7 KB</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat__label">JS Bundle Size:</span>
+            <span class="about-stat__value">0 KB external bundle</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2 class="heading">Dependencies</h2>
+        <div class="chip-list">
+          {runtimeDependencies.map((dependency) => <span class="chip">{dependency}</span>)}
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2 class="heading">Credits & Thanks</h2>
+        <p class="body">
+          Karrik by Jean-Baptiste Morizot, Lucas Le Bihan. Distributed by
+          <a class="body-link" href="https://velvetyne.fr" target="_blank" rel="noopener noreferrer">
+            https://velvetyne.fr
+          </a>
+        </p>
+      </section>
+
+      <section class="about-section">
+        <p class="subtitle">
+          Built and designed with ¯\(ツ)/¯ in Amsterdam Slotervaart © Vlad Repinskiy {currentYear}
+        </p>
+      </section>
+    </div>
+  </section>
+</BaseLayout>

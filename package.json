@@ -1,21 +1,19 @@
 {
-  "name": "bun-react-template",
+  "name": "vlad-repins-ky",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "bun --hot ./src/index.html",
-    "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify && cp public/robots.txt public/sitemap.xml dist/",
+    "dev": "astro dev --port 3000",
+    "build": "astro build",
     "lint": "bun x eslint . --ext .ts,.tsx,.js,.jsx --report-unused-disable-directives",
     "lint:fix": "bun x eslint . --ext .ts,.tsx,.js,.jsx --report-unused-disable-directives --fix",
     "format": "bun x prettier . --write",
     "format:check": "bun x prettier . --check"
   },
   "dependencies": {
-    "goober": "^2.1.18",
-    "react": "^19",
-    "react-dom": "^19",
-    "wouter": "^3.8.0"
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "^6.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

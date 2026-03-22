@@ -1,0 +1,61 @@
+---
+import { WISHLIST_CATEGORIES } from "@/constants/wishlist.constant";
+import type { WishlistCategory } from "@/types/wishlist.types";
+
+interface Props {
+  title: string;
+  link?: string;
+  price?: number;
+  category?: WishlistCategory;
+}
+
+const { title, link, price, category } = Astro.props;
+
+const formatPrice = (value: number) =>
+  new Intl.NumberFormat("nl-NL", {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+
+const getCategoryIcon = (wishlistCategory?: WishlistCategory) => {
+  switch (wishlistCategory) {
+    case WISHLIST_CATEGORIES.BOOK:
+      return "📔";
+    case WISHLIST_CATEGORIES.MUSIC:
+      return "💿";
+    case WISHLIST_CATEGORIES.CLOTHES:
+      return "👔";
+    case WISHLIST_CATEGORIES.TECH:
+      return "🖥️";
+    case WISHLIST_CATEGORIES.HOUSEHOLD:
+      return "🛖";
+    case WISHLIST_CATEGORIES.DRINK:
+      return "🍸";
+    case WISHLIST_CATEGORIES.RARITIES:
+      return "✨";
+    default:
+      return "👀";
+  }
+};
+
+const label = `${getCategoryIcon(category)} ${title}`;
+---
+
+<div class="wishlist-row">
+  <div class="wishlist-row__title">
+    {
+      link ? (
+        <a class="body-link" href={link} target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
+      ) : (
+        <p class="body">{label}</p>
+      )
+    }
+  </div>
+  <div class="wishlist-row__price">
+    <span>{price != null ? formatPrice(price) : "?"}</span>
+  </div>
+</div>

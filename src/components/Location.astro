@@ -1,0 +1,86 @@
+<div class="location" data-location>
+  <p class="subtitle location__row">
+    <span>Based in Amsterdam, Noord-Holland</span>
+    <span class="location__divider" hidden data-location-divider-time>•</span>
+    <span hidden data-location-time></span>
+    <span class="location__divider" hidden data-location-divider-weather>•</span>
+    <span hidden data-location-weather></span>
+  </p>
+</div>
+
+<script>
+  const locationRoot = document.querySelector("[data-location]");
+
+  if (locationRoot) {
+    const timeNode = locationRoot.querySelector("[data-location-time]");
+    const weatherNode = locationRoot.querySelector("[data-location-weather]");
+    const timeDivider = locationRoot.querySelector("[data-location-divider-time]");
+    const weatherDivider = locationRoot.querySelector(
+      "[data-location-divider-weather]",
+    );
+
+    const getWeatherEmoji = (code) => {
+      if (code === 0) return "☀️";
+      if (code <= 3) return "🌤️";
+      if (code <= 49) return "🌫️";
+      if (code <= 67) return "🌧️";
+      if (code <= 77) return "🌨️";
+      if (code <= 82) return "🌧️";
+      if (code <= 86) return "🌨️";
+      return "⛈️";
+    };
+
+    const getWeatherDescription = (code) => {
+      if (code === 0) return "Clear";
+      if (code <= 3) return "Partly Cloudy";
+      if (code <= 49) return "Foggy";
+      if (code <= 67) return "Rainy";
+      if (code <= 77) return "Snowy";
+      if (code <= 82) return "Rain Showers";
+      if (code <= 86) return "Snow Showers";
+      return "Thunderstorm";
+    };
+
+    const updateTime = () => {
+      if (!timeNode || !timeDivider) return;
+
+      const amsterdamTime = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Europe/Amsterdam",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }).format(new Date());
+
+      timeNode.textContent = `🕐 ${amsterdamTime}`;
+      timeNode.hidden = false;
+      timeDivider.hidden = false;
+    };
+
+    const updateWeather = async () => {
+      if (!weatherNode || !weatherDivider) return;
+
+      try {
+        const response = await fetch(
+          "https://api.open-meteo.com/v1/forecast?latitude=52.3676&longitude=4.9041&current=temperature_2m,weather_code&timezone=Europe/Amsterdam",
+        );
+
+        if (!response.ok) return;
+
+        const data = await response.json();
+        const temperature = Math.round(data.current.temperature_2m);
+        const weatherCode = data.current.weather_code;
+
+        weatherNode.textContent = `${getWeatherEmoji(weatherCode)} ${getWeatherDescription(weatherCode)}, ${temperature}°C`;
+        weatherNode.hidden = false;
+        weatherDivider.hidden = false;
+      } catch (error) {
+        console.error("Failed to fetch weather", error);
+      }
+    };
+
+    updateTime();
+    updateWeather();
+    window.setInterval(updateTime, 60000);
+    window.setInterval(updateWeather, 600000);
+  }
+</script>

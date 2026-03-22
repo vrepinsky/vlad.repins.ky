@@ -1,0 +1,32 @@
+---
+interface Props {
+  direction: "top" | "bottom";
+  height?: number;
+}
+
+const { direction, height = 100 } = Astro.props;
+
+const blurLayers = [
+  { blur: 0.1953125, maskStart: 0, maskPeak1: 12.5, maskPeak2: 25, maskEnd: 37.5 },
+  { blur: 0.390625, maskStart: 12.5, maskPeak1: 25, maskPeak2: 37.5, maskEnd: 50 },
+  { blur: 0.78125, maskStart: 25, maskPeak1: 37.5, maskPeak2: 50, maskEnd: 62.5 },
+  { blur: 1.5625, maskStart: 37.5, maskPeak1: 50, maskPeak2: 62.5, maskEnd: 75 },
+  { blur: 3.125, maskStart: 50, maskPeak1: 62.5, maskPeak2: 75, maskEnd: 87.5 },
+  { blur: 6.25, maskStart: 62.5, maskPeak1: 75, maskPeak2: 87.5, maskEnd: 100 },
+  { blur: 12.5, maskStart: 75, maskPeak1: 87.5, maskPeak2: 100, maskEnd: 112.5 },
+  { blur: 25, maskStart: 87.5, maskPeak1: 100, maskPeak2: 112.5, maskEnd: 125 },
+];
+
+const gradientDirection = direction === "top" ? "to top" : "to bottom";
+---
+
+<div class={`edge-blur edge-blur--${direction}`} style={`height:${height}px;`}>
+  {
+    blurLayers.map((layer, index) => (
+      <div
+        class="edge-blur__layer"
+        style={`--blur:${layer.blur}px;--gradient-direction:${gradientDirection};--mask-start:${layer.maskStart}%;--mask-peak-1:${layer.maskPeak1}%;--mask-peak-2:${layer.maskPeak2}%;--mask-end:${layer.maskEnd}%;--z-index:${index + 1};`}
+      />
+    ))
+  }
+</div>

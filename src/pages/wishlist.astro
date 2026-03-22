@@ -1,0 +1,21 @@
+---
+import WishlistRow from "@/components/WishlistRow.astro";
+import { WISHLIST_ITEMS } from "@/constants/wishlist.constant";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const items = [...WISHLIST_ITEMS].sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+---
+
+<BaseLayout title="Wishlist — vlad.repins.ky">
+  <section class="page">
+    <div class="content-column content-column--wishlist">
+      <div class="section-title">
+        <h1 class="title">🤫 Wishlist</h1>
+      </div>
+
+      <div class="wishlist-list">
+        {items.map((item) => <WishlistRow {...item} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

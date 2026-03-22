@@ -1,0 +1,27 @@
+---
+import CVEntry from "@/components/CVEntry.astro";
+import { EDUCATION, WORK_EXPERIENCE } from "@/constants/cv.constant";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="CV — vlad.repins.ky">
+  <section class="page">
+    <section class="content-section" id="work-experience">
+      <div class="section-title">
+        <h1 class="title">Work</h1>
+      </div>
+      <div class="entry-list">
+        {WORK_EXPERIENCE.map((entry) => <CVEntry entry={entry} />)}
+      </div>
+    </section>
+
+    <section class="content-section" id="education">
+      <div class="section-title">
+        <h1 class="title">Education</h1>
+      </div>
+      <div class="entry-list">
+        {EDUCATION.map((entry) => <CVEntry entry={entry} />)}
+      </div>
+    </section>
+  </section>
+</BaseLayout>

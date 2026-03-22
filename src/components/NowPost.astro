@@ -1,0 +1,47 @@
+---
+import type { NowPost as NowPostType } from "@/types/now.types";
+
+interface Props {
+  post: NowPostType;
+  group: string;
+}
+
+const { post, group } = Astro.props;
+---
+
+<article class="now-post">
+  <header class="now-post__header">
+    <h2 class="heading">{post.title}</h2>
+    <p class="subtitle">{post.date}</p>
+  </header>
+
+  <div class="now-post__content">
+    {post.content.map((paragraph) => <p class="body" set:html={paragraph} />)}
+  </div>
+
+  {
+    post.images && post.images.length > 0 && (
+      <div class="now-post__images">
+        {post.images.map((image, index) => (
+          <img
+            class="now-post__image"
+            src={image}
+            alt={`${post.title} - Image ${index + 1}`}
+          />
+        ))}
+      </div>
+    )
+  }
+
+  {
+    post.links && post.links.length > 0 && (
+      <div class="now-post__links">
+        {post.links.map((link) => (
+          <a class="body-link" href={link.url} target="_blank" rel="noopener noreferrer">
+            {link.label ?? link.url}
+          </a>
+        ))}
+      </div>
+    )
+  }
+</article>

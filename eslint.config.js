@@ -7,7 +7,16 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig([
   {
-    ignores: ["dist/**", "node_modules/**"],
+    ignores: [
+      ".astro/**",
+      "dist/**",
+      "node_modules/**",
+      "src/frontend.tsx",
+      "src/components/**/*.tsx",
+      "src/context/**",
+      "src/hooks/**",
+      "src/utils/**",
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
