@@ -106,12 +106,14 @@ body[data-image-viewer-open="true"] {
   width: fit-content;
   font-family: var(--font-display);
   font-size: var(--font-size-md);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
   text-decoration: none;
   padding: 0.1rem 0;
   transition:
-    transform 0.2s ease,
     color 0.2s ease,
     opacity 0.2s ease;
 }
@@ -126,11 +128,21 @@ body[data-image-viewer-open="true"] {
   text-align: left;
 }
 
+.sidebar__nav-keybinding {
+  opacity: 0.55;
+}
+
 .sidebar__nav-link:hover,
 .sidebar__child-link:hover,
 .sidebar__nav-link.is-active {
   color: var(--color-text);
-  transform: translateX(5px);
+}
+
+.sidebar__nav-link:hover .sidebar__nav-label,
+.sidebar__nav-link.is-active .sidebar__nav-label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
 .page {

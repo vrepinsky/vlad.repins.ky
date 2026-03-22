@@ -14,8 +14,14 @@ const isActive = (href: string) => pathname === href;
   <div class="sidebar__nav">
     {
       NAV_ITEMS.map((item) => (
-        <a class:list={["sidebar__nav-link", { "is-active": isActive(item.href) }]} href={item.href}>
-          {item.label}
+        <a
+          class:list={["sidebar__nav-link", { "is-active": isActive(item.href) }]}
+          href={item.href}
+          data-sidebar-link
+          data-keybinding={item.keybinding}
+        >
+          <span class="sidebar__nav-keybinding">[{item.keybinding}]</span>
+          <span class="sidebar__nav-label">{item.label}</span>
         </a>
       ))
     }
