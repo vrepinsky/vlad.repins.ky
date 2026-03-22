@@ -1,12 +1,7 @@
 :root {
   --font-body:
-    ui-sans-serif,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Helvetica Neue",
-    Helvetica,
-    "Segoe UI",
-    sans-serif;
+    ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Helvetica, "Segoe UI", sans-serif;
   --font-display: var(--font-karrik), var(--font-body);
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;

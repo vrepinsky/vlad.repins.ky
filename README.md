@@ -29,8 +29,11 @@ bun run lint
 # Auto-fix lint issues
 bun run lint:fix
 
-# Format everything with Prettier
+# Format everything with oxfmt
 bun run format
+
+# Check formatting without rewriting
+bun run format:check
 ```
 
 ## Content
