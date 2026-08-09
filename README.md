@@ -27,7 +27,7 @@ bun run format
 | `public/` | Copied as-is (`CNAME`, `robots.txt`) |
 | `scripts/build.ts` | After Vite: write HTML + sitemap |
 
-- `/` — 100vh hero + links (includes CV)
+- `/` — 100vh hero + links (CV linked from the bio)
 - `/cv/` — work, education, about
 
 ## Build
