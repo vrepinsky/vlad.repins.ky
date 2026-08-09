@@ -1,7 +1,7 @@
 # vlad.repins.ky
 
-Personal one-pager. Static HTML built from TypeScript. A little client JS
-handles theme, clock, and weather.
+Personal site. Static HTML built from TypeScript. A little client JS handles
+theme, clock, and weather.
 
 ```bash
 bun install
@@ -17,8 +17,8 @@ bun run format
 
 | Path | What |
 | --- | --- |
-| `src/site/routes.ts` | URLs, titles, sitemap (`/`, `/wishlist/`, `/404`) |
-| `src/pages/` | Page functions (home is the one-pager) |
+| `src/site/routes.ts` | URLs, titles, sitemap |
+| `src/pages/` | Page functions |
 | `src/components/` | Shared bits (CV entry, wishlist row, …) |
 | `src/layout/` | Document shell, head, footer links |
 | `src/styles/` | CSS (`app.css` pulls the rest in) |
@@ -27,8 +27,9 @@ bun run format
 | `public/` | Copied as-is (`CNAME`, `robots.txt`) |
 | `scripts/build.ts` | After Vite: write HTML + sitemap |
 
-The home page is hero → work → education → about → links. Wishlist stays a
-quiet separate URL.
+- `/` — 100vh hero + links (includes CV)
+- `/cv/` — work, education, about
+- `/wishlist/` — quiet separate URL
 
 ## Build
 
