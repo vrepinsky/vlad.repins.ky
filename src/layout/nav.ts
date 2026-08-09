@@ -18,6 +18,10 @@ const SOCIAL_LINKS: FooterLink[] = [
   { label: "Book a call", href: "https://cal.com/vladrepinsky", external: true },
 ];
 
+export const backToHome = () => html`
+  <a class="back-link" href="/" aria-label="Back to home">‹</a>
+`;
+
 export const footerLinks = (leading: FooterLink[] = []) => html`
   <nav class="footer-links" aria-label="Links">
     ${[...leading, ...SITE_LINKS, ...SOCIAL_LINKS].map(

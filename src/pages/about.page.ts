@@ -1,5 +1,5 @@
 import { link } from "@/components/link";
-import { footerLinks } from "@/layout/nav";
+import { backToHome } from "@/layout/nav";
 import { bundle } from "@/site/assets";
 import { html } from "@/site/html";
 
@@ -15,7 +15,10 @@ export const about = () => html`
   <div class="page">
     <div class="page__content">
       <section class="section">
-        <div class="section__title"><h1 class="title">About This Site</h1></div>
+        <div class="section__title section__title--with-back">
+          ${backToHome()}
+          <h1 class="title">About This Site</h1>
+        </div>
 
         <section class="section--about">
           <h3 class="heading">Bundle Size</h3>
@@ -37,8 +40,6 @@ export const about = () => html`
           </p>
         </section>
       </section>
-
-      ${footerLinks([{ label: "Home", href: "/" }])}
     </div>
   </div>
 `;

@@ -77,6 +77,26 @@
   margin-bottom: 2rem;
 }
 
+.section__title--with-back {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.back-link {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
 .section--about {
   margin-top: 1.5rem;
   display: flex;
