@@ -1,7 +1,5 @@
 import { html, raw } from "@/site/html";
-import { navRoutes, type Route } from "@/site/routes";
 
-const ARIA_CURRENT = raw('aria-current="page"');
 const NEW_TAB = raw('target="_blank" rel="noopener noreferrer"');
 
 const SOCIAL_LINKS = [
@@ -12,30 +10,17 @@ const SOCIAL_LINKS = [
   { label: "Book a call", href: "https://cal.com/vladrepinsky" },
 ];
 
-export const nav = (current: Route) => html`
-  <ul id="nav" class="nav">
-    ${navRoutes().map((route) => {
-      const isCurrent = route.path === current.path;
-
-      return html`
-        <li class="nav__item">
-          <a class="nav__link" href="${route.path}" ${isCurrent && ARIA_CURRENT}
-            >${route.navLabel}</a
-          >
-        </li>
-      `;
-    })}
-  </ul>
-`;
-
-export const socialLinks = () => html`
-  <div class="social">
+export const footerLinks = () => html`
+  <nav class="footer-links" aria-label="Links">
     ${SOCIAL_LINKS.map(
       (item) => html`
-        <a class="social__link" href="${item.href}" ${!item.href.startsWith("mailto:") && NEW_TAB}
+        <a
+          class="footer-links__link"
+          href="${item.href}"
+          ${!item.href.startsWith("mailto:") && NEW_TAB}
           >${item.label}</a
         >
       `,
     )}
-  </div>
+  </nav>
 `;
