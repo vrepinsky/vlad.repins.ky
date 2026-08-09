@@ -38,7 +38,7 @@ const hero = () => html`
 export const home = () => html`
   <div class="page">
     <div class="page__content">
-      ${hero()}
+      <section class="section">${hero()}</section>
 
       <section class="section">
         <div class="section__title"><h1 class="title">Work</h1></div>
