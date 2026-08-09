@@ -1,3 +1,4 @@
+import { cv } from "@/pages/cv.page";
 import { home } from "@/pages/home.page";
 import { notFound } from "@/pages/notfound.page";
 import { wishlist } from "@/pages/wishlist.page";
@@ -29,6 +30,16 @@ export const ROUTES: Route[] = [
     priority: 1.0,
     changefreq: "monthly",
     render: home,
+  },
+  {
+    path: "/cv/",
+    out: "cv/index.html",
+    title: `CV — ${SITE.brand}`,
+    description:
+      "Work experience and education of Vlad Repinskiy, a product engineer based in Amsterdam.",
+    priority: 0.9,
+    changefreq: "monthly",
+    render: cv,
   },
   {
     path: "/wishlist/",
