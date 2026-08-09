@@ -6,7 +6,9 @@ export const WORK_EXPERIENCE: CVEntry[] = [
     endDate: "Current",
     company: "Sparqle",
     title: "Product Engineer",
-    description: ["WIP"],
+    description: [
+      "We're a small team building an accumulator network of green delivery companies across Western Europe. We're solving problems of limited observability and human error through engineering, to improve the UX of a key service like package delivery. Forward-deployed engineering at its finest.",
+    ],
     location: "Amsterdam, Netherlands",
   },
   {
