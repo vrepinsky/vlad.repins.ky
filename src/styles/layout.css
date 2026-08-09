@@ -14,7 +14,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background: var(--bg);
 }
 
@@ -44,7 +44,6 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
-  scroll-margin-top: 15vh;
 }
 
 .section__title {

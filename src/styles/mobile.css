@@ -21,10 +21,6 @@
     display: none;
   }
 
-  .content {
-    justify-content: flex-start;
-  }
-
   .page {
     padding: 6rem 3rem;
   }

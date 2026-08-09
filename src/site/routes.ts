@@ -18,8 +18,6 @@ export type Route = {
   out: string;
   /** Absent means the route is hidden from the sidebar nav. */
   navLabel?: string;
-  /** Rendered under the parent in the nav when that parent is the current route. */
-  navChildren?: { label: string; href: string }[];
   title: string;
   description: string;
   /** Defaults to true. False adds a noindex meta and drops it from the sitemap. */
@@ -44,10 +42,6 @@ export const ROUTES: Route[] = [
     path: "/cv/",
     out: "cv/index.html",
     navLabel: "CV",
-    navChildren: [
-      { label: "Work", href: "/cv/#work-experience" },
-      { label: "Education", href: "/cv/#education" },
-    ],
     title: `CV — ${SITE.brand}`,
     description:
       "Work experience and education of Vlad Repinskiy, a product engineer based in Amsterdam.",

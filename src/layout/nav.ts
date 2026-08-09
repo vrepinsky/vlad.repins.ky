@@ -16,10 +16,6 @@ const SOCIAL_LINKS = [
  * Rendered server-side with aria-current on the active link, and swapped
  * out-of-band on every boosted navigation (hx-select-oob="#nav"), so the
  * active state never needs JS.
- *
- * Sub-items are shown only while their parent is the current route — the
- * expandable-on-click behaviour is gone along with its useState. They opt out
- * of hx-boost so the browser handles the #hash scroll natively.
  */
 export const nav = (current: Route) => html`
   <ul id="nav" class="nav">
@@ -30,19 +26,6 @@ export const nav = (current: Route) => html`
           <a class="nav__link" href="${route.path}" ${isCurrent && ARIA_CURRENT}
             >${route.navLabel}</a
           >
-          ${isCurrent &&
-          route.navChildren &&
-          html`
-            <ul class="nav__children">
-              ${route.navChildren.map(
-                (child) => html`
-                  <li>
-                    <a class="nav__child" href="${child.href}" hx-boost="false">${child.label}</a>
-                  </li>
-                `,
-              )}
-            </ul>
-          `}
         </li>
       `;
     })}

@@ -10,10 +10,13 @@
   z-index: 100;
 }
 
+/* No align-items here: nav and social must stretch to a shared width (the
+   wider of the two) so their labels share a left edge. flex-end on .sidebar
+   then parks that whole column on the right. With flex-end on this box too,
+   a nav without CV children shrinks on its own and jumps to the right edge. */
 .sidebar__top {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 4rem;
 }
 
@@ -38,16 +41,7 @@
   gap: 0.25rem;
 }
 
-.nav__children {
-  list-style: none;
-  padding-left: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
 .nav__link,
-.nav__child,
 .social__link {
   display: block;
   width: fit-content;
@@ -63,8 +57,7 @@
     color 0.2s ease;
 }
 
-.nav__link:hover,
-.nav__child:hover {
+.nav__link:hover {
   transform: translateX(5px);
   color: var(--text);
 }
