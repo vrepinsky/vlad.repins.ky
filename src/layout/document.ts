@@ -11,6 +11,7 @@ const edgeBlur = (direction: "top" | "bottom") => html`
 
 export const document = (route: Route, content: Raw): string => {
   const { js } = bundle();
+  const blur = route.edgeBlur;
 
   return `<!doctype html>
 ${toHtml(html`
@@ -20,7 +21,7 @@ ${toHtml(html`
     </head>
     <body>
       <div class="app">
-        ${edgeBlur("top")}
+        ${blur && edgeBlur("top")}
 
         <button
           type="button"
@@ -33,7 +34,7 @@ ${toHtml(html`
 
         <main class="content" id="content">${content}</main>
 
-        ${edgeBlur("bottom")}
+        ${blur && edgeBlur("bottom")}
       </div>
 
       <script type="module" src="${js}"></script>

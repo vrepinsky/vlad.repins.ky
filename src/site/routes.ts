@@ -17,6 +17,8 @@ export type Route = {
   title: string;
   description: string;
   indexable?: boolean; // Defaults to true; false → noindex and omit from sitemap.
+  // Top/bottom edge blur for long scrolling pages.
+  edgeBlur?: boolean;
   priority?: number;
   changefreq?: "weekly" | "monthly" | "yearly";
   render: () => Raw;
@@ -40,6 +42,7 @@ export const ROUTES: Route[] = [
       "Work experience and education of Vlad Repinskiy, a product engineer based in Amsterdam.",
     priority: 0.9,
     changefreq: "monthly",
+    edgeBlur: true,
     render: cv,
   },
   {
@@ -57,6 +60,7 @@ export const ROUTES: Route[] = [
     title: `Wishlist — ${SITE.brand}`,
     description: "Things Vlad Repinskiy would like to own, sorted by price.",
     indexable: false,
+    edgeBlur: true,
     render: wishlist,
   },
   {
