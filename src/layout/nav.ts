@@ -9,7 +9,7 @@ type FooterLink = {
 };
 
 const SOCIAL_LINKS: FooterLink[] = [
-  { label: "GitHub", href: "https://github.com/vladrepinskiy", external: true },
+  { label: "GitHub", href: "https://github.com/vrepinsky", external: true },
   { label: "Twitter", href: "https://x.com/vladrepinsky", external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/vladrepinsky/", external: true },
   { label: "Email", href: "mailto:vladrepinsky@gmail.com" },
