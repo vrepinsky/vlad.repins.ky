@@ -8,8 +8,16 @@
     padding: 6rem 3rem 3rem;
   }
 
+  .page--hero {
+    padding: 5rem 3rem 3rem;
+  }
+
   .page__content {
     gap: 4rem;
+  }
+
+  .page__content--hero {
+    gap: 2.5rem;
   }
 
   .page__content--wishlist {
