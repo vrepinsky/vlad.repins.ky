@@ -1,3 +1,5 @@
+import "@/styles/app.css";
+
 /**
  * Everything on this site that genuinely needs JavaScript. Replaces
  * theme.provider.tsx, useToggleTheme, useTheme, Location.tsx and their hooks.

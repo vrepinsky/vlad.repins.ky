@@ -1,4 +1,4 @@
-import { asset, bundle } from "@/site/assets";
+import { bundle } from "@/site/assets";
 import { html, raw } from "@/site/html";
 import { SITE, type Route } from "@/site/routes";
 
@@ -24,46 +24,19 @@ const THEME_BOOTSTRAP = raw(`
 <script>try{var t=localStorage.getItem("theme");
 document.documentElement.dataset.theme=(t?JSON.parse(t):null)||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");}catch(e){}</script>`);
 
-/**
- * @font-face is emitted inline rather than imported into app.css on purpose:
- * Bun's CSS bundler unconditionally base64-inlines woff2, which turned a 1.4 KB
- * stylesheet into a 76 KB render-blocking one. Keeping the fonts out of Bun's
- * graph makes them separately cacheable and non-blocking.
- */
-const fonts = () => {
-  const regular = asset("fonts/Karrik-Regular.woff2");
-  const italic = asset("fonts/Karrik-Italic.woff2");
-
-  return html`
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="${regular}" />
-    <style>
-      @font-face {
-        font-family: "Karrik";
-        src: url("${raw(regular)}") format("woff2");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Karrik";
-        src: url("${raw(italic)}") format("woff2");
-        font-weight: 400;
-        font-style: italic;
-        font-display: swap;
-      }
-    </style>
-  `;
-};
+const googleFonts = () => html`
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+`;
 
 export const head = (route: Route) => {
   const canonical = `${SITE.origin}${route.path}`;
   const indexable = route.indexable !== false;
+  const { css } = bundle();
 
   return html`
     <meta charset="UTF-8" />
@@ -88,7 +61,7 @@ export const head = (route: Route) => {
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
 
-    ${fonts()}
-    <link rel="stylesheet" href="${bundle().css}" />
+    ${googleFonts()}
+    ${css ? html`<link rel="stylesheet" href="${css}" />` : ""}
   `;
 };

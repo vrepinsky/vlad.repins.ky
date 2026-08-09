@@ -42,6 +42,6 @@ jobs:
           publish_dir: dist
           force_orphan: true
           # force_orphan wipes the branch on every deploy, so CNAME must be
-          # re-created here. static/CNAME is also copied into dist/ by the
-          # build as a second belt.
+          # re-created here. public/CNAME is also copied into dist/ by Vite
+          # as a second belt.
           cname: vlad.repins.ky
