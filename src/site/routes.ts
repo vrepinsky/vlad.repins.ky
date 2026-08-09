@@ -1,3 +1,4 @@
+import { about } from "@/pages/about.page";
 import { cv } from "@/pages/cv.page";
 import { home } from "@/pages/home.page";
 import { notFound } from "@/pages/notfound.page";
@@ -40,6 +41,15 @@ export const ROUTES: Route[] = [
     priority: 0.9,
     changefreq: "monthly",
     render: cv,
+  },
+  {
+    path: "/about/",
+    out: "about/index.html",
+    title: `About — ${SITE.brand}`,
+    description: "How this site is built: bundle size, fonts and credits.",
+    priority: 0.5,
+    changefreq: "yearly",
+    render: about,
   },
   {
     path: "/wishlist/",
