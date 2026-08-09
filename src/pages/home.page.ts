@@ -20,6 +20,10 @@ const hero = () => html`
       Engineering degree from one of the leading European universities. Love working on
       relationships, processes and documentation. Since recently, addicted to shipping things.
     </p>
+    <p class="body">
+      Read about my experience in more detail
+      <a class="link" href="/cv/">here</a>.
+    </p>
   </div>
 `;
 
@@ -27,7 +31,7 @@ export const home = () => html`
   <div class="page page--hero">
     <div class="page__content page__content--hero">
       ${hero()}
-      ${footerLinks([{ label: "CV", href: "/cv/" }])}
+      ${footerLinks()}
     </div>
   </div>
 `;
