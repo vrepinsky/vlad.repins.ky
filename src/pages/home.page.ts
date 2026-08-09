@@ -11,7 +11,7 @@ const kb = (bytes: number) => `${(bytes / 1024).toFixed(2)} KB`;
 const bundleSize = () => {
   const { sizes } = bundle();
 
-  return kb(sizes.css + sizes.js + sizes.htmx);
+  return kb(sizes.css + sizes.js);
 };
 
 const hero = () => html`

@@ -11,7 +11,6 @@ import { renderSitemap } from "@/site/sitemap";
 const ROOT = new URL("..", import.meta.url).pathname;
 const DIST = join(ROOT, "dist");
 const MANIFEST_PATH = join(DIST, ".vite/manifest.json");
-const HTMX_PATH = join(ROOT, "public/htmx.min.js");
 
 type ViteManifest = Record<
   string,
@@ -33,17 +32,14 @@ if (!cssFile) throw new Error("build: entry has no CSS (app.ts must import app.c
 
 const jsUrl = `/${entry.file}`;
 const cssUrl = `/${cssFile}`;
-const htmxUrl = "/htmx.min.js";
 
 const jsGz = gzipFile(join(DIST, entry.file));
 const cssGz = gzipFile(join(DIST, cssFile));
-const htmxGz = gzipFile(HTMX_PATH);
 
 setManifest({
   js: jsUrl,
   css: cssUrl,
-  htmx: htmxUrl,
-  sizes: { js: jsGz, css: cssGz, htmx: htmxGz },
+  sizes: { js: jsGz, css: cssGz },
 });
 
 for (const route of ROUTES) {
@@ -57,5 +53,4 @@ const kb = (bytes: number) => `${(bytes / 1024).toFixed(2)} KB`;
 console.log(`  pages    ${ROUTES.length} (${ROUTES.map((r) => r.path).join(", ")})`);
 console.log(`  js       ${kb(jsGz)} gz  (${basename(entry.file)})`);
 console.log(`  css      ${kb(cssGz)} gz  (${basename(cssFile)})`);
-console.log(`  htmx     ${kb(htmxGz)} gz`);
-console.log(`  total    ${kb(jsGz + cssGz + htmxGz)} gz over the wire`);
+console.log(`  total    ${kb(jsGz + cssGz)} gz over the wire`);

@@ -10,7 +10,7 @@ const edgeBlur = (direction: "top" | "bottom") => html`
 `;
 
 export const document = (route: Route, content: Raw): string => {
-  const { js, htmx } = bundle();
+  const { js } = bundle();
 
   return `<!doctype html>
 ${toHtml(html`
@@ -36,7 +36,6 @@ ${toHtml(html`
         ${edgeBlur("bottom")}
       </div>
 
-      <script defer src="${htmx}"></script>
       <script type="module" src="${js}"></script>
     </body>
   </html>

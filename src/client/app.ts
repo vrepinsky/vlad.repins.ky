@@ -58,7 +58,6 @@ const weatherDescription = (code: number): string => {
   return "Thunderstorm";
 };
 
-// Cached across htmx navigations so returning to "/" doesn't refetch.
 let weatherText = "";
 
 const fill = (selector: string, text: string) => {
@@ -96,24 +95,5 @@ const initLocation = () => {
   setInterval(() => void fetchWeather(), 600_000);
 };
 
-// Back/forward skips hx-select-oob, so re-derive aria-current from the URL.
-const syncNav = () => {
-  const here = window.location.pathname.replace(/\/?$/, "/");
-  for (const anchor of window.document.querySelectorAll<HTMLAnchorElement>("#nav a[href]")) {
-    const href = anchor.getAttribute("href") ?? "";
-    const path = href.replace(/\/?$/, "/");
-    if (path === here) anchor.setAttribute("aria-current", "page");
-    else anchor.removeAttribute("aria-current");
-  }
-};
-
 initTheme();
 initLocation();
-
-// Re-fill clock/weather after htmx replaces #content.
-window.document.body.addEventListener("htmx:afterSettle", () => {
-  renderClock();
-  renderWeather();
-});
-
-window.document.body.addEventListener("htmx:historyRestore", syncNav);

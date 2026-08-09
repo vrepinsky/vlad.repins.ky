@@ -1,11 +1,10 @@
-// Hashed JS/CSS/htmx URLs for templates — set by the build script or Vite dev plugin.
+// Hashed JS/CSS URLs for templates — set by the build script or Vite dev plugin.
 
 export type Manifest = {
   js: string;
   css: string;
-  htmx: string;
-  // Gzipped byte sizes shown on /about/.
-  sizes: { js: number; css: number; htmx: number };
+  // Gzipped byte sizes shown on the one-pager about section.
+  sizes: { js: number; css: number };
 };
 
 let manifest: Manifest | null = null;

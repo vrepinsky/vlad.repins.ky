@@ -13,9 +13,6 @@
     "format": "bunx oxfmt src scripts",
     "format:check": "bunx oxfmt --check src scripts"
   },
-  "dependencies": {
-    "htmx.org": "2.0.10"
-  },
   "devDependencies": {
     "@types/bun": "latest",
     "oxfmt": "^0.60.0",
