@@ -12,16 +12,12 @@ export const SITE = {
 } as const;
 
 export type Route = {
-  // Canonical URL path; trailing slash except for "/".
-  path: string;
-  // Path under dist/ for the written HTML file.
-  out: string;
-  // Missing → hidden from the sidebar.
-  navLabel?: string;
+  path: string; // Canonical URL path; trailing slash except for "/".
+  out: string; // Path under dist/ for the written HTML file.
+  navLabel?: string; // Missing → hidden from the sidebar.
   title: string;
   description: string;
-  // Defaults to true; false → noindex and omit from sitemap.
-  indexable?: boolean;
+  indexable?: boolean; // Defaults to true; false → noindex and omit from sitemap.
   priority?: number;
   changefreq?: "weekly" | "monthly" | "yearly";
   render: () => Raw;

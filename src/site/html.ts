@@ -34,6 +34,7 @@ const stringify = (value: Renderable): string => {
 // Auto-escaping template tag. Nest `html` / use `raw()` to skip escaping.
 export const html = (strings: TemplateStringsArray, ...values: Renderable[]): Raw => {
   let out = strings[0]!;
+
   for (let i = 0; i < values.length; i++) {
     out += stringify(values[i]) + strings[i + 1]!;
   }
