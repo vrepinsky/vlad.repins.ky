@@ -29,7 +29,6 @@ bun run format
 
 - `/` — 100vh hero + links (includes CV)
 - `/cv/` — work, education, about
-- `/wishlist/` — quiet separate URL
 
 ## Build
 
