@@ -98,14 +98,6 @@ h6,
   font-size: var(--size-sm);
 }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: center;
-  margin-top: 0.5rem;
-}
-
 .emoji-button {
   background: none;
   border: none;

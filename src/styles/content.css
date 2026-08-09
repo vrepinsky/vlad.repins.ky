@@ -99,34 +99,3 @@
   white-space: nowrap;
 }
 
-/* About — formerly AboutBundleStats.tsx */
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-
-.stats__item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.stats__label {
-  font-size: var(--size-sm);
-  color: var(--text);
-  opacity: 0.6;
-}
-
-.stats__value {
-  font-size: var(--size-lg);
-  font-weight: 600;
-  color: var(--text);
-}
-
-.stats__note {
-  font-size: var(--size-xs);
-  margin-top: 0.5rem;
-}
