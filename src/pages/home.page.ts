@@ -16,13 +16,10 @@ const hero = () => html`
 
     <p class="body">
       I'm a product engineer with a track record from across the industry - from pure computer
-      science research to self-managed startup projects. Strong engineering culture with a Master of
-      Engineering degree from one of the leading European universities. Love working on
-      relationships, processes and documentation. Since recently, addicted to shipping things.
-    </p>
-    <p class="body">
-      Read about my experience in more detail
-      <a class="link" href="/cv/">here</a>.
+      science research to self-managed startup projects. Read about my experience in more detail
+      <a class="link" href="/cv/">here</a>. Strong engineering culture with a Master of Engineering
+      degree from one of the leading European universities. Love working on relationships, processes
+      and documentation. Since recently, addicted to shipping things.
     </p>
   </div>
 `;
