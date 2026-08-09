@@ -1,0 +1,42 @@
+/* Theme tokens. Replaces theme.constant.ts + the goober theme context: the
+   values that used to flow through props.theme are now custom properties, and
+   switching theme is one attribute write on <html>. */
+
+:root {
+  --font-body: "Roboto", sans-serif;
+  --font-mono: "Karrik", sans-serif;
+
+  --size-xs: 0.75rem;
+  --size-sm: 0.875rem;
+  --size-md: 1rem;
+  --size-lg: 1.25rem;
+  --size-xl: 1.5rem;
+  --size-xxl: 2rem;
+
+  --sidebar-width: 20%;
+  --edge-blur-height: 100px;
+
+  /* Light is the default so a themeless document (JS disabled, no stored
+     preference) still renders correctly. */
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #808080;
+  --accent: #f5a623;
+}
+
+[data-theme="dark"] {
+  --bg: #1a1a1a;
+  --text: #f5f5f5;
+  --text-muted: #999999;
+  --accent: #ffbf69;
+}
+
+/* Visitors with JS disabled still follow their OS preference. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1a1a;
+    --text: #f5f5f5;
+    --text-muted: #999999;
+    --accent: #ffbf69;
+  }
+}

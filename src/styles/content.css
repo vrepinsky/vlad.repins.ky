@@ -1,0 +1,132 @@
+/* CV — formerly CVEntry.tsx / CVEntryList.tsx / CvEntryStack.tsx */
+
+.cv-entry-list {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cv-entry {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--bg);
+  text-align: left;
+}
+
+/* The "Stack" accordion is a native <details>: no state, no JS. */
+
+.stack__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  font-size: var(--size-md);
+  color: var(--text);
+  opacity: 0.8;
+  user-select: none;
+  cursor: pointer;
+  list-style: none;
+}
+
+.stack__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.stack__toggle:hover {
+  opacity: 1;
+}
+
+.stack__triangle {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.stack[open] .stack__triangle {
+  transform: rotate(90deg);
+}
+
+.stack__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+/* Wishlist — formerly WishlistItem.tsx */
+
+.page__content--wishlist {
+  min-width: 0;
+  gap: 4rem;
+}
+
+.wishlist {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wishlist-item {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.wishlist-item__label {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.wishlist-item__price {
+  flex-shrink: 0;
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* About — formerly AboutBundleStats.tsx */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stats__label {
+  font-size: var(--size-sm);
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.stats__value {
+  font-size: var(--size-lg);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stats__note {
+  font-size: var(--size-xs);
+  margin-top: 0.5rem;
+}

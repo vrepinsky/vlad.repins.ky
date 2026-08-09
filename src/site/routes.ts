@@ -1,0 +1,94 @@
+import { about } from "@/pages/about.page";
+import { cv } from "@/pages/cv.page";
+import { home } from "@/pages/home.page";
+import { notFound } from "@/pages/notfound.page";
+import { wishlist } from "@/pages/wishlist.page";
+import type { Raw } from "@/site/html";
+
+export const SITE = {
+  origin: "https://vlad.repins.ky",
+  brand: "vlad.repins.ky — Vlad Repinskiy",
+  description: "Personal site of Vlad Repinskiy — a product engineer.",
+} as const;
+
+export type Route = {
+  /** Canonical path, always with a trailing slash except "/". */
+  path: string;
+  /** Output path relative to dist/. */
+  out: string;
+  /** Absent means the route is hidden from the sidebar nav. */
+  navLabel?: string;
+  /** Rendered under the parent in the nav when that parent is the current route. */
+  navChildren?: { label: string; href: string }[];
+  title: string;
+  description: string;
+  /** Defaults to true. False adds a noindex meta and drops it from the sitemap. */
+  indexable?: boolean;
+  priority?: number;
+  changefreq?: "weekly" | "monthly" | "yearly";
+  render: () => Raw;
+};
+
+export const ROUTES: Route[] = [
+  {
+    path: "/",
+    out: "index.html",
+    navLabel: "Home",
+    title: SITE.brand,
+    description: SITE.description,
+    priority: 1.0,
+    changefreq: "monthly",
+    render: home,
+  },
+  {
+    path: "/cv/",
+    out: "cv/index.html",
+    navLabel: "CV",
+    navChildren: [
+      { label: "Work", href: "/cv/#work-experience" },
+      { label: "Education", href: "/cv/#education" },
+    ],
+    title: `CV — ${SITE.brand}`,
+    description:
+      "Work experience and education of Vlad Repinskiy, a product engineer based in Amsterdam.",
+    priority: 0.9,
+    changefreq: "monthly",
+    render: cv,
+  },
+  {
+    path: "/about/",
+    out: "about/index.html",
+    navLabel: "About",
+    title: `About — ${SITE.brand}`,
+    description: "How this site is built: bundle size, dependencies, fonts and credits.",
+    priority: 0.5,
+    changefreq: "yearly",
+    render: about,
+  },
+  {
+    path: "/wishlist/",
+    out: "wishlist/index.html",
+    title: `Wishlist — ${SITE.brand}`,
+    description: "Things Vlad Repinskiy would like to own, sorted by price.",
+    indexable: false,
+    render: wishlist,
+  },
+  {
+    path: "/404",
+    out: "404.html",
+    title: `Not found — ${SITE.brand}`,
+    description: "",
+    indexable: false,
+    render: notFound,
+  },
+];
+
+export const NOT_FOUND = ROUTES.find((route) => route.path === "/404")!;
+
+export const navRoutes = () => ROUTES.filter((route) => route.navLabel);
+
+/** Normalise an incoming request path to a canonical route path. */
+export const routeFor = (pathname: string): Route | undefined => {
+  const normalised = pathname.endsWith("/") ? pathname : `${pathname}/`;
+  return ROUTES.find((route) => route.path === normalised);
+};

@@ -1,0 +1,12 @@
+/* Single stylesheet entrypoint. Do NOT @import a font stylesheet here: Bun's
+   CSS bundler base64-inlines woff2 unconditionally, which would push this
+   bundle from ~6 KB to ~76 KB and make it render-blocking. @font-face is
+   emitted inline in <head> instead — see src/layout/head.ts. */
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./sidebar.css";
+@import "./content.css";
+@import "./transitions.css";
+@import "./mobile.css";
