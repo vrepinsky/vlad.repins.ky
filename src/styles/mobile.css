@@ -1,27 +1,23 @@
-.mobile-only {
-  display: none;
-}
-
 @media (max-width: 640px) {
-  .desktop-only {
-    display: none;
-  }
-
-  .mobile-only {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .sidebar {
-    display: none;
+  .theme-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
   }
 
   .page {
-    padding: 6rem 3rem;
+    padding: 6rem 3rem 3rem;
+  }
+
+  .page--hero {
+    padding: 6rem 3rem 3rem;
   }
 
   .page__content {
     gap: 4rem;
+  }
+
+  .page__content--hero {
+    gap: 2.5rem;
   }
 
   .page__content--wishlist {
@@ -43,8 +39,6 @@
 
   /* Plain top fade instead of the desktop backdrop-blur stack. */
   .edge-blur--top {
-    left: 0;
-    right: 0;
     height: 50px;
     background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
   }
@@ -54,8 +48,6 @@
   }
 
   .edge-blur--bottom {
-    left: 0;
-    right: 0;
     height: 50px;
   }
 }

@@ -5,10 +5,9 @@ import { SITE, type Route } from "@/site/routes";
 const FAVICON =
   "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>";
 
-// Maps legacy /#/cv-style hashes to real paths before htmx can request them.
+// Old hash-router bookmarks (/#/cv, /#/now, …) all land on the one-pager.
 const HASH_REDIRECT = raw(`
-<script>(function(){var h=location.hash;if(h.charAt(1)!=="/")return;var p=h.slice(1).replace(/\\/?$/,"/");
-if(p==="/now/"||p==="/lab/")p="/";location.replace(p);})();</script>`);
+<script>(function(){var h=location.hash;if(h.charAt(1)!=="/")return;location.replace("/");})();</script>`);
 
 // Set theme before paint. JSON.parse: old app stored `"dark"` with quotes.
 const THEME_BOOTSTRAP = raw(`

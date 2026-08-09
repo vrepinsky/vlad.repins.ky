@@ -14,10 +14,11 @@ export const SITE = {
 export type Route = {
   path: string; // Canonical URL path; trailing slash except for "/".
   out: string; // Path under dist/ for the written HTML file.
-  navLabel?: string; // Missing → hidden from the sidebar.
   title: string;
   description: string;
   indexable?: boolean; // Defaults to true; false → noindex and omit from sitemap.
+  // Top/bottom edge blur for long scrolling pages.
+  edgeBlur?: boolean;
   priority?: number;
   changefreq?: "weekly" | "monthly" | "yearly";
   render: () => Raw;
@@ -27,7 +28,6 @@ export const ROUTES: Route[] = [
   {
     path: "/",
     out: "index.html",
-    navLabel: "Home",
     title: SITE.brand,
     description: SITE.description,
     priority: 1.0,
@@ -37,20 +37,19 @@ export const ROUTES: Route[] = [
   {
     path: "/cv/",
     out: "cv/index.html",
-    navLabel: "CV",
     title: `CV — ${SITE.brand}`,
     description:
       "Work experience and education of Vlad Repinskiy, a product engineer based in Amsterdam.",
     priority: 0.9,
     changefreq: "monthly",
+    edgeBlur: true,
     render: cv,
   },
   {
     path: "/about/",
     out: "about/index.html",
-    navLabel: "About",
     title: `About — ${SITE.brand}`,
-    description: "How this site is built: bundle size, dependencies, fonts and credits.",
+    description: "How this site is built: bundle size, fonts and credits.",
     priority: 0.5,
     changefreq: "yearly",
     render: about,
@@ -61,6 +60,7 @@ export const ROUTES: Route[] = [
     title: `Wishlist — ${SITE.brand}`,
     description: "Things Vlad Repinskiy would like to own, sorted by price.",
     indexable: false,
+    edgeBlur: true,
     render: wishlist,
   },
   {
@@ -74,8 +74,6 @@ export const ROUTES: Route[] = [
 ];
 
 export const NOT_FOUND = ROUTES.find((route) => route.path === "/404")!;
-
-export const navRoutes = () => ROUTES.filter((route) => route.navLabel);
 
 export const routeFor = (pathname: string): Route | undefined => {
   const normalised = pathname.endsWith("/") ? pathname : `${pathname}/`;

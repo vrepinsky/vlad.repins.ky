@@ -1,9 +1,7 @@
-import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { gzipSync } from "node:zlib";
 import type { Plugin, ViteDevServer } from "vite";
 
-const HTMX_PUBLIC = "/htmx.min.js";
 const CLIENT_ENTRY = "/src/client/app.ts";
 // Render-blocking in <head> during dev so the first paint isn't unstyled.
 const STYLES_ENTRY = "/src/styles/app.css";
@@ -14,8 +12,7 @@ type SiteModules = {
   setManifest: (m: {
     js: string;
     css: string;
-    htmx: string;
-    sizes: { js: number; css: number; htmx: number };
+    sizes: { js: number; css: number };
   }) => void;
   renderPage: (route: { path: string }) => string;
   routeFor: (pathname: string) => { path: string } | undefined;
@@ -40,7 +37,7 @@ const loadSite = async (server: ViteDevServer): Promise<SiteModules> => {
 
 // Vite plugin: render TS page functions for each route during `vite dev`.
 export const siteDevPlugin = (): Plugin => {
-  let sizes = { js: 0, css: 0, htmx: 0 };
+  let sizes = { js: 0, css: 0 };
   let sizesReady: Promise<void> | null = null;
 
   const ensureSizes = (server: ViteDevServer) =>
@@ -77,11 +74,7 @@ export const siteDevPlugin = (): Plugin => {
           if (chunk.fileName.endsWith(".css")) css += gz;
         }
       }
-      sizes = {
-        js,
-        css,
-        htmx: gzipSize(readFileSync(resolve(server.config.root, "public/htmx.min.js"))),
-      };
+      sizes = { js, css };
     })());
 
   return {
@@ -109,7 +102,6 @@ export const siteDevPlugin = (): Plugin => {
           site.setManifest({
             js: CLIENT_ENTRY,
             css: STYLES_ENTRY,
-            htmx: HTMX_PUBLIC,
             sizes,
           });
 
