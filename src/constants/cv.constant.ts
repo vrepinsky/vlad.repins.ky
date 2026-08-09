@@ -2,9 +2,17 @@ import type { CVEntry } from "@/types/cv.types";
 
 export const WORK_EXPERIENCE: CVEntry[] = [
   {
-    startDate: "May 2025",
+    startDate: "March 2026",
     endDate: "Current",
-    company: "Lemni / Input",
+    company: "Sparqle",
+    title: "Product Engineer",
+    description: ["WIP"],
+    location: "Amsterdam, Netherlands",
+  },
+  {
+    startDate: "May 2025",
+    endDate: "November 2025",
+    company: "Input",
     title: "Product Engineer",
     description: [
       "I'm part of a small Sequoia-backed team building the next generation of email and collaboration tools. I work across the entire product surface, from shaping features to shipping them into production.",
