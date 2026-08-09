@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build && bun scripts/build.ts",
     "preview": "bun run build && bun scripts/serve-dist.ts",
-    "typecheck": "bunx tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "lint": "bunx oxlint src scripts",
     "lint:fix": "bunx oxlint --fix src scripts",
     "format": "bunx oxfmt src scripts",
@@ -20,6 +20,7 @@
     "@types/bun": "latest",
     "oxfmt": "^0.60.0",
     "oxlint": "^1.75.0",
+    "typescript": "~5.9.3",
     "vite": "^8.2.1"
   }
 }
