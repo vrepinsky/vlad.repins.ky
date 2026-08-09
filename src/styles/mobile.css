@@ -1,6 +1,3 @@
-/* Everything below replaces useIsMobile() and the isMobile branches in App.tsx,
-   Hero.tsx and Wishlist.tsx. The 640px breakpoint matches the old hook. */
-
 .mobile-only {
   display: none;
 }
@@ -15,8 +12,6 @@
     flex-direction: column;
   }
 
-  /* The home page carries the CV inline on mobile — what MobilePage.tsx used
-     to assemble — so the sidebar isn't needed to reach it. */
   .sidebar {
     display: none;
   }
@@ -46,8 +41,7 @@
     margin-bottom: 1rem;
   }
 
-  /* Mobile uses a plain gradient at the top instead of the backdrop-blur
-     stack, matching the old MobilePage ::before. */
+  /* Plain top fade instead of the desktop backdrop-blur stack. */
   .edge-blur--top {
     left: 0;
     right: 0;

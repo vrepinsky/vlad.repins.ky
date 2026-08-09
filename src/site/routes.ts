@@ -12,15 +12,15 @@ export const SITE = {
 } as const;
 
 export type Route = {
-  /** Canonical path, always with a trailing slash except "/". */
+  // Canonical URL path; trailing slash except for "/".
   path: string;
-  /** Output path relative to dist/. */
+  // Path under dist/ for the written HTML file.
   out: string;
-  /** Absent means the route is hidden from the sidebar nav. */
+  // Missing → hidden from the sidebar.
   navLabel?: string;
   title: string;
   description: string;
-  /** Defaults to true. False adds a noindex meta and drops it from the sitemap. */
+  // Defaults to true; false → noindex and omit from sitemap.
   indexable?: boolean;
   priority?: number;
   changefreq?: "weekly" | "monthly" | "yearly";
@@ -81,8 +81,8 @@ export const NOT_FOUND = ROUTES.find((route) => route.path === "/404")!;
 
 export const navRoutes = () => ROUTES.filter((route) => route.navLabel);
 
-/** Normalise an incoming request path to a canonical route path. */
 export const routeFor = (pathname: string): Route | undefined => {
   const normalised = pathname.endsWith("/") ? pathname : `${pathname}/`;
+
   return ROUTES.find((route) => route.path === normalised);
 };

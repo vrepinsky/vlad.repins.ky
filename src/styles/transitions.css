@@ -1,9 +1,4 @@
-/* Page transition — formerly RouteTransition.tsx's fadeOut/fadeIn state machine.
-   htmx opts each boosted swap in via `hx-swap="... transition:true"`; naming the
-   region keeps the sidebar out of the animation. Browsers without View
-   Transitions (htmx feature-detects document.startViewTransition) simply swap
-   instantly. */
-
+/* htmx transition:true + view-transition-name keeps the sidebar out of the anim. */
 #content {
   view-transition-name: content;
 }

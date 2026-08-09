@@ -5,6 +5,8 @@ import type { Plugin, ViteDevServer } from "vite";
 
 const HTMX_PUBLIC = "/htmx.min.js";
 const CLIENT_ENTRY = "/src/client/app.ts";
+// Render-blocking in <head> during dev so the first paint isn't unstyled.
+const STYLES_ENTRY = "/src/styles/app.css";
 
 const gzipSize = (bytes: Uint8Array) => gzipSync(bytes).byteLength;
 
@@ -26,6 +28,7 @@ const loadSite = async (server: ViteDevServer): Promise<SiteModules> => {
   const render = await server.ssrLoadModule("/src/site/render.ts");
   const routes = await server.ssrLoadModule("/src/site/routes.ts");
   const sitemap = await server.ssrLoadModule("/src/site/sitemap.ts");
+
   return {
     setManifest: assets.setManifest,
     renderPage: render.renderPage,
@@ -35,7 +38,7 @@ const loadSite = async (server: ViteDevServer): Promise<SiteModules> => {
   };
 };
 
-/** Serves rendered HTML for site routes during `vite dev`. */
+// Vite plugin: render TS page functions for each route during `vite dev`.
 export const siteDevPlugin = (): Plugin => {
   let sizes = { js: 0, css: 0, htmx: 0 };
   let sizesReady: Promise<void> | null = null;
@@ -88,7 +91,7 @@ export const siteDevPlugin = (): Plugin => {
         void (async () => {
           const pathname = new URL(req.url ?? "/", "http://localhost").pathname;
 
-          // Leave module graph, Vite internals, and hashed/public files to Vite.
+          // Module graph, Vite internals, and files with extensions → Vite.
           if (
             pathname !== "/sitemap.xml" &&
             (pathname.startsWith("/src/") ||
@@ -97,6 +100,7 @@ export const siteDevPlugin = (): Plugin => {
               pathname.includes("."))
           ) {
             next();
+
             return;
           }
 
@@ -104,7 +108,7 @@ export const siteDevPlugin = (): Plugin => {
           const site = await loadSite(server);
           site.setManifest({
             js: CLIENT_ENTRY,
-            css: "",
+            css: STYLES_ENTRY,
             htmx: HTMX_PUBLIC,
             sizes,
           });
@@ -112,11 +116,15 @@ export const siteDevPlugin = (): Plugin => {
           if (pathname === "/sitemap.xml") {
             res.setHeader("content-type", "application/xml");
             res.end(site.renderSitemap());
+
             return;
           }
 
           const route = site.routeFor(pathname);
-          const body = site.renderPage(route ?? site.NOT_FOUND);
+          const body = await server.transformIndexHtml(
+            pathname,
+            site.renderPage(route ?? site.NOT_FOUND),
+          );
           res.statusCode = route ? 200 : 404;
           res.setHeader("content-type", "text/html; charset=utf-8");
           res.end(body);

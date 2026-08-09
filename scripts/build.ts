@@ -1,7 +1,4 @@
-/**
- * After Vite bundles JS/CSS/fonts into dist/, render each route to HTML and
- * write the sitemap. Asset URLs come from Vite's manifest.
- */
+// Render routes + sitemap into dist/ after Vite has written the asset manifest.
 
 import { readFileSync } from "node:fs";
 import { gzipSync } from "node:zlib";

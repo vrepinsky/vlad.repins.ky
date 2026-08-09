@@ -1,7 +1,4 @@
-/**
- * Serves dist/ with GitHub Pages semantics — directory indexes and a 404.html
- * fallback — so the real hashed output can be smoke-tested before deploying.
- */
+// Preview server for dist/ with GitHub Pages directory + 404.html behaviour.
 
 import { join } from "node:path";
 
@@ -9,6 +6,7 @@ const DIST = new URL("../dist", import.meta.url).pathname;
 
 const serve = async (path: string) => {
   const file = Bun.file(join(DIST, path));
+
   return (await file.exists()) ? file : null;
 };
 
@@ -26,6 +24,7 @@ export default {
     }
 
     const notFound = await serve("404.html");
+
     return notFound
       ? new Response(notFound, { status: 404 })
       : new Response("Not found", { status: 404 });

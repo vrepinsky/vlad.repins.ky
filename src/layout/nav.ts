@@ -12,15 +12,11 @@ const SOCIAL_LINKS = [
   { label: "Book a call", href: "https://cal.com/vladrepinsky" },
 ];
 
-/**
- * Rendered server-side with aria-current on the active link, and swapped
- * out-of-band on every boosted navigation (hx-select-oob="#nav"), so the
- * active state never needs JS.
- */
 export const nav = (current: Route) => html`
   <ul id="nav" class="nav">
     ${navRoutes().map((route) => {
       const isCurrent = route.path === current.path;
+
       return html`
         <li class="nav__item">
           <a class="nav__link" href="${route.path}" ${isCurrent && ARIA_CURRENT}

@@ -10,10 +10,7 @@
   z-index: 100;
 }
 
-/* No align-items here: nav and social must stretch to a shared width (the
-   wider of the two) so their labels share a left edge. flex-end on .sidebar
-   then parks that whole column on the right. With flex-end on this box too,
-   a nav without CV children shrinks on its own and jumps to the right edge. */
+/* No flex-end here: nav + social share one width so labels share a left edge. */
 .sidebar__top {
   display: flex;
   flex-direction: column;
@@ -27,8 +24,6 @@
   padding: 0 1rem;
   margin-top: auto;
 }
-
-/* Nav and social links share the typographic treatment and hover slide. */
 
 .nav,
 .social {
@@ -67,8 +62,6 @@
   color: var(--text);
 }
 
-/* Active route. Rendered server-side and refreshed by the out-of-band nav swap,
-   so no JS is involved in keeping it correct. */
 .nav__link[aria-current="page"] {
   color: var(--text);
   transform: translateX(5px);

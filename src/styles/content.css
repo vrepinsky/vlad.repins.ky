@@ -1,5 +1,3 @@
-/* CV — formerly CVEntry.tsx / CVEntryList.tsx / CvEntryStack.tsx */
-
 .cv-entry-list {
   position: relative;
   width: 100%;
@@ -19,8 +17,6 @@
   background: var(--bg);
   text-align: left;
 }
-
-/* The "Stack" accordion is a native <details>: no state, no JS. */
 
 .stack__toggle {
   display: flex;
@@ -60,8 +56,6 @@
   padding-top: 1rem;
 }
 
-/* Wishlist — formerly WishlistItem.tsx */
-
 .page__content--wishlist {
   min-width: 0;
   gap: 4rem;
@@ -98,4 +92,3 @@
   color: var(--text-muted);
   white-space: nowrap;
 }
-

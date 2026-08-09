@@ -29,11 +29,7 @@ const hero = () => html`
   </div>
 `;
 
-/**
- * On mobile the home page also carries the CV, reproducing what MobilePage.tsx
- * used to compose in JS. On desktop `.mobile-only` hides it, since /cv/ is its
- * own route.
- */
+// Mobile also inlines the CV here; desktop hides it via .mobile-only (/cv/ is separate).
 export const home = () => html`
   <div class="page">
     <div class="page__content">

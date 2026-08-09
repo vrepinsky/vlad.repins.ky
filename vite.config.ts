@@ -30,6 +30,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  // Silence unused-root warning; root is still the project directory.
   root,
 });

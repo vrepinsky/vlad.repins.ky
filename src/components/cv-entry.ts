@@ -2,10 +2,6 @@ import { link } from "@/components/link";
 import { html } from "@/site/html";
 import type { CVEntry } from "@/types/cv.types";
 
-/**
- * The "Stack" accordion is a native <details> — what used to be Collapsible.tsx
- * plus its useState. The triangle and open/close animation are pure CSS.
- */
 const stack = (items: string[]) => html`
   <details class="stack">
     <summary class="stack__toggle">

@@ -1,31 +1,19 @@
 import "@/styles/app.css";
 
-/**
- * Everything on this site that genuinely needs JavaScript. Replaces
- * theme.provider.tsx, useToggleTheme, useTheme, Location.tsx and their hooks.
- *
- * htmx swaps #content, so anything that writes into page content has to run
- * again after a swap — hence the re-apply on htmx:afterSettle. The theme lives
- * on <html>, outside every swap target, so it only ever needs wiring once.
- */
-
 type ThemeKey = "light" | "dark";
 
 const THEME_ICONS: Record<ThemeKey, string> = { light: "🌞", dark: "🌙" };
-
-/* ---------------------------------------------------------------- theme --- */
 
 const currentTheme = (): ThemeKey =>
   document.documentElement.dataset["theme"] === "dark" ? "dark" : "light";
 
 const applyTheme = (theme: ThemeKey) => {
   document.documentElement.dataset["theme"] = theme;
-  // Keep the JSON encoding the React app used, so a visitor's stored
-  // preference survives the migration in both directions.
+  // JSON.stringify matches the old React app's localStorage shape.
   try {
     localStorage.setItem("theme", JSON.stringify(theme));
   } catch {
-    /* private mode — the theme just won't persist */
+    // private mode — preference just won't persist
   }
   const button = document.getElementById("theme-toggle");
   if (button) button.textContent = THEME_ICONS[theme];
@@ -38,8 +26,6 @@ const initTheme = () => {
     ?.addEventListener("click", () => applyTheme(currentTheme() === "dark" ? "light" : "dark"));
 };
 
-/* ------------------------------------------------------ clock + weather --- */
-
 const timeFormatter = new Intl.DateTimeFormat("en-GB", {
   timeZone: "Europe/Amsterdam",
   hour: "2-digit",
@@ -50,7 +36,6 @@ const timeFormatter = new Intl.DateTimeFormat("en-GB", {
 const WEATHER_URL =
   "https://api.open-meteo.com/v1/forecast?latitude=52.3676&longitude=4.9041&current=temperature_2m,weather_code&timezone=Europe/Amsterdam";
 
-// Weather code mappings from Open-Meteo
 const weatherEmoji = (code: number): string => {
   if (code === 0) return "☀️";
   if (code <= 3) return "🌤️";
@@ -73,7 +58,7 @@ const weatherDescription = (code: number): string => {
   return "Thunderstorm";
 };
 
-/** Cached so a boosted navigation back to "/" doesn't refetch. */
+// Cached across htmx navigations so returning to "/" doesn't refetch.
 let weatherText = "";
 
 const fill = (selector: string, text: string) => {
@@ -111,13 +96,7 @@ const initLocation = () => {
   setInterval(() => void fetchWeather(), 600_000);
 };
 
-/* ------------------------------------------------------------------ nav --- */
-
-/**
- * The nav is normally kept correct by hx-select-oob, which re-renders it from
- * the server on every boosted swap. History restores (back/forward) don't go
- * through that path, so re-derive the active link from the URL.
- */
+// Back/forward skips hx-select-oob, so re-derive aria-current from the URL.
 const syncNav = () => {
   const here = window.location.pathname.replace(/\/?$/, "/");
   for (const anchor of window.document.querySelectorAll<HTMLAnchorElement>("#nav a[href]")) {
@@ -128,13 +107,10 @@ const syncNav = () => {
   }
 };
 
-/* ----------------------------------------------------------------- boot --- */
-
 initTheme();
 initLocation();
 
-// Content that lives inside #content is replaced wholesale on every boosted
-// navigation, so re-apply anything JS had written into it.
+// Re-fill clock/weather after htmx replaces #content.
 window.document.body.addEventListener("htmx:afterSettle", () => {
   renderClock();
   renderWeather();

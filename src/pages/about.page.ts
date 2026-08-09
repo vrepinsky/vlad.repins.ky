@@ -4,9 +4,9 @@ import { html } from "@/site/html";
 
 const kb = (bytes: number) => `${(bytes / 1024).toFixed(2)} KB`;
 
-/** Everything a visitor downloads, measured from the real build output. */
 const bundleSize = () => {
   const { sizes } = bundle();
+
   return kb(sizes.css + sizes.js + sizes.htmx);
 };
 

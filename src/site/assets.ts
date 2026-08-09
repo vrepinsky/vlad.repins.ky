@@ -1,15 +1,10 @@
-/**
- * Resolves hashed JS/CSS/htmx URLs for templates.
- *
- * Vite fills this in after bundling (build) or with dev URLs (dev middleware).
- */
+// Hashed JS/CSS/htmx URLs for templates — set by the build script or Vite dev plugin.
 
 export type Manifest = {
   js: string;
-  /** Empty in dev — Vite injects CSS via the JS module graph. */
   css: string;
   htmx: string;
-  /** Gzipped bytes of what a visitor actually downloads, shown on /about/. */
+  // Gzipped byte sizes shown on /about/.
   sizes: { js: number; css: number; htmx: number };
 };
 
@@ -21,5 +16,6 @@ export const setManifest = (next: Manifest) => {
 
 export const bundle = (): Manifest => {
   if (!manifest) throw new Error("bundle(): manifest not set");
+
   return manifest;
 };

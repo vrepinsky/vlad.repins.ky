@@ -81,10 +81,7 @@
   content: "• ";
 }
 
-/* Progressive edge blur — formerly EdgeBlur.tsx's eight generated layers.
-   Each layer blurs a little more and is masked to a band that overlaps its
-   neighbours, which is what makes the falloff read as continuous. */
-
+/* Eight stacked backdrop-filter bands with overlapping masks. */
 .edge-blur {
   position: fixed;
   left: var(--sidebar-width);

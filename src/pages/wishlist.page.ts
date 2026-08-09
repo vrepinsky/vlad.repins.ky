@@ -3,7 +3,7 @@ import { WISHLIST_ITEMS } from "@/constants/wishlist.constant";
 import { html } from "@/site/html";
 
 export const wishlist = () => {
-  // toSorted, not sort — the React version mutated the imported WISHLIST_ITEMS.
+  // toSorted: sort() would mutate the imported constant.
   const byPrice = WISHLIST_ITEMS.toSorted((a, b) => (a.price ?? 0) - (b.price ?? 0));
 
   return html`

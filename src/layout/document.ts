@@ -4,11 +4,6 @@ import { bundle } from "@/site/assets";
 import { html, toHtml, type Raw } from "@/site/html";
 import type { Route } from "@/site/routes";
 
-/**
- * The signature progressive blur: eight stacked backdrop-filter layers, each
- * masked by an overlapping gradient. Used to be generated in JSX from an array
- * of blur/mask values; now it is eight empty divs plus :nth-child() rules.
- */
 const edgeBlur = (direction: "top" | "bottom") => html`
   <div class="edge-blur edge-blur--${direction}" aria-hidden="true">
     ${Array.from({ length: 8 }, () => html`<div class="edge-blur__layer"></div>`)}
@@ -36,7 +31,7 @@ ${toHtml(html`
 
         <nav class="sidebar">
           <div class="sidebar__top">${nav(route)} ${socialLinks()}</div>
-          <!-- Outside #nav so the out-of-band nav swap never restarts the clock. -->
+          <!-- Outside #nav so hx-select-oob never restarts the clock. -->
           <div class="sidebar__bottom" id="sidebar-controls">
             <button
               type="button"
