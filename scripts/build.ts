@@ -100,13 +100,14 @@ const gzipped = async (artifact: Blob) =>
 
 const jsGz = await gzipped(jsArtifact);
 const cssGz = await gzipped(cssArtifact);
+const htmxGz = Bun.gzipSync(await Bun.file(HTMX).bytes()).byteLength;
 
 setManifest({
   js: `/assets/${basename(jsArtifact.path)}`,
   css: `/assets/${basename(cssArtifact.path)}`,
   htmx: htmxUrl,
   assets,
-  sizes: { js: jsGz, css: cssGz },
+  sizes: { js: jsGz, css: cssGz, htmx: htmxGz },
 });
 
 // 5. Pages.
@@ -118,10 +119,10 @@ for (const route of ROUTES) {
 await Bun.write(join(DIST, "sitemap.xml"), renderSitemap());
 
 const kb = (bytes: number) => `${(bytes / 1024).toFixed(2)} KB`;
-const htmxSize = Bun.gzipSync(await Bun.file(HTMX).bytes()).byteLength;
 
 console.log(`  pages    ${ROUTES.length} (${ROUTES.map((r) => r.path).join(", ")})`);
 console.log(`  assets   ${assets.size} hashed, ${statics.length} verbatim`);
 console.log(`  js       ${kb(jsArtifact.size)} raw / ${kb(jsGz)} gz`);
 console.log(`  css      ${kb(cssArtifact.size)} raw / ${kb(cssGz)} gz`);
-console.log(`  htmx     ${kb(htmxSize)} gz`);
+console.log(`  htmx     ${kb(htmxGz)} gz`);
+console.log(`  total    ${kb(jsGz + cssGz + htmxGz)} gz over the wire`);

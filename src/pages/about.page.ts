@@ -6,25 +6,34 @@ import packageJson from "../../package.json";
 const kb = (bytes: number) => `${(bytes / 1024).toFixed(2)} KB`;
 
 /**
- * Bundle sizes come from the real build output (gzipped) rather than the
- * hardcoded figures the React version shipped.
+ * Measured from the real build output rather than the hardcoded figures the
+ * React version shipped. htmx is listed separately because it dominates the
+ * total, and quoting the app bundle alone would flatter the number.
  */
 const bundleStats = () => {
   const { sizes } = bundle();
+  const total = sizes.css + sizes.js + sizes.htmx;
 
   return html`
     <h3 class="heading">Bundle Statistics</h3>
     <div class="stats">
       <div class="stats__item">
-        <span class="stats__label">CSS Bundle Size:</span>
+        <span class="stats__label">CSS:</span>
         <span class="stats__value">${kb(sizes.css)}</span>
       </div>
       <div class="stats__item">
-        <span class="stats__label">JS Bundle Size:</span>
+        <span class="stats__label">App JS:</span>
         <span class="stats__value">${kb(sizes.js)}</span>
       </div>
+      <div class="stats__item">
+        <span class="stats__label">htmx:</span>
+        <span class="stats__value">${kb(sizes.htmx)}</span>
+      </div>
     </div>
-    <p class="subtitle stats__note">Gzipped, measured at build time.</p>
+    <p class="subtitle stats__note">
+      Gzipped, measured at build time. ${kb(total)} total — the React version this replaced shipped
+      189.12 KB.
+    </p>
   `;
 };
 
