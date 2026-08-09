@@ -1,7 +1,7 @@
 # vlad.repins.ky
 
-Personal site. Static HTML pages, built from TypeScript. htmx soft-navigates
-between them. A little client JS handles theme, clock, and weather.
+Personal one-pager. Static HTML built from TypeScript. A little client JS
+handles theme, clock, and weather.
 
 ```bash
 bun install
@@ -17,17 +17,18 @@ bun run format
 
 | Path | What |
 | --- | --- |
-| `src/site/routes.ts` | URLs, titles, nav, sitemap |
-| `src/pages/` | One function per page (main content) |
+| `src/site/routes.ts` | URLs, titles, sitemap (`/`, `/wishlist/`, `/404`) |
+| `src/pages/` | Page functions (home is the one-pager) |
 | `src/components/` | Shared bits (CV entry, wishlist row, …) |
-| `src/layout/` | Document shell, head, sidebar |
+| `src/layout/` | Document shell, head, footer links |
 | `src/styles/` | CSS (`app.css` pulls the rest in) |
 | `src/client/app.ts` | Theme, clock, weather |
 | `src/fonts/` | Karrik; Vite hashes via CSS `url(...)` |
-| `public/` | Copied as-is (`CNAME`, `robots.txt`, htmx) |
+| `public/` | Copied as-is (`CNAME`, `robots.txt`) |
 | `scripts/build.ts` | After Vite: write HTML + sitemap |
 
-Add a route → add it to `ROUTES` and a page function. Nav, meta, and sitemap follow.
+The home page is hero → work → education → about → links. Wishlist stays a
+quiet separate URL.
 
 ## Build
 
@@ -35,8 +36,3 @@ Add a route → add it to `ROUTES` and a page function. Nav, meta, and sitemap f
 2. `scripts/build.ts` reads the Vite manifest, runs the page functions, writes HTML.
 
 `bun run dev` uses the same page functions via a Vite plugin (live reload / HMR).
-
-## In the browser
-
-htmx swaps `#content` (and refreshes the nav) so the sidebar stays put. Without
-JS, links are normal full page loads.
