@@ -28,7 +28,8 @@ bun run format
 | `scripts/build.ts` | After Vite: write HTML + sitemap |
 
 - `/` — 100vh hero + links (CV linked from the bio)
-- `/cv/` — work, education, about
+- `/cv/` — work, education
+- `/about/` — how the site is built
 
 ## Build
 

@@ -8,6 +8,8 @@ type FooterLink = {
   external?: boolean;
 };
 
+const SITE_LINKS: FooterLink[] = [{ label: "About", href: "/about/" }];
+
 const SOCIAL_LINKS: FooterLink[] = [
   { label: "GitHub", href: "https://github.com/vrepinsky", external: true },
   { label: "Twitter", href: "https://twitter.com/vrepinsky", external: true },
@@ -18,7 +20,7 @@ const SOCIAL_LINKS: FooterLink[] = [
 
 export const footerLinks = (leading: FooterLink[] = []) => html`
   <nav class="footer-links" aria-label="Links">
-    ${[...leading, ...SOCIAL_LINKS].map(
+    ${[...leading, ...SITE_LINKS, ...SOCIAL_LINKS].map(
       (item) => html`
         <a class="footer-links__link" href="${item.href}" ${item.external && NEW_TAB}
           >${item.label}</a
