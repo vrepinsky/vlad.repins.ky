@@ -1,0 +1,23 @@
+{
+  "src/client/app.ts": {
+    "file": "assets/app-BmqI1aPU.js",
+    "name": "app",
+    "src": "src/client/app.ts",
+    "isEntry": true,
+    "css": [
+      "assets/app-CFiuoaRo.css"
+    ],
+    "assets": [
+      "assets/Karrik-Regular-B_oc4L_E.woff2",
+      "assets/Karrik-Italic-BAxHorvI.woff2"
+    ]
+  },
+  "src/fonts/Karrik-Italic.woff2": {
+    "file": "assets/Karrik-Italic-BAxHorvI.woff2",
+    "src": "src/fonts/Karrik-Italic.woff2"
+  },
+  "src/fonts/Karrik-Regular.woff2": {
+    "file": "assets/Karrik-Regular-B_oc4L_E.woff2",
+    "src": "src/fonts/Karrik-Regular.woff2"
+  }
+}
