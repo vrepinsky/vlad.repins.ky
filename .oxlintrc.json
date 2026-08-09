@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "env": {
+    "browser": true,
+    "es2024": true
+  },
+  "ignorePatterns": ["dist", "node_modules"],
+  "overrides": [
+    {
+      "files": ["scripts/**"],
+      "rules": {
+        // The build writes files sequentially on purpose: it is a handful of
+        // small writes and the ordering keeps the output log readable.
+        "no-await-in-loop": "off"
+      }
+    }
+  ]
+}

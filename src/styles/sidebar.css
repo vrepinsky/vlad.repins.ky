@@ -1,0 +1,68 @@
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100%;
+  padding: 15vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  background: var(--bg);
+  z-index: 100;
+}
+
+/* No flex-end here: nav + social share one width so labels share a left edge. */
+.sidebar__top {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.sidebar__bottom {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 0 1rem;
+  margin-top: auto;
+}
+
+.nav,
+.social {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.nav {
+  gap: 0.25rem;
+}
+
+.nav__link,
+.social__link {
+  display: block;
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: var(--size-md);
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 0.1rem 0;
+  text-decoration: none;
+  transform: translateX(0);
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav__link:hover {
+  transform: translateX(5px);
+  color: var(--text);
+}
+
+.social__link:hover {
+  transform: translateX(10px);
+  color: var(--text);
+}
+
+.nav__link[aria-current="page"] {
+  color: var(--text);
+  transform: translateX(5px);
+}

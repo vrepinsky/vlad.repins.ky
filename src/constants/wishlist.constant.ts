@@ -89,8 +89,7 @@ export const WISHLIST_ITEMS = [
     category: WISHLIST_CATEGORIES.CLOTHES,
   },
   {
-    title:
-      "Design Manual for the Swiss Federal Railways - Josef Muller Brockmann",
+    title: "Design Manual for the Swiss Federal Railways - Josef Muller Brockmann",
     link: "https://cahiercentral.com/products/design-manual-for-the-swiss-federal-railways-josef-muller-brockmann",
     price: 80,
     category: WISHLIST_CATEGORIES.BOOK,

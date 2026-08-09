@@ -12,5 +12,4 @@ export interface WishlistSection {
   items: WishlistItemData[];
 }
 
-export type WishlistCategory =
-  (typeof WISHLIST_CATEGORIES)[keyof typeof WISHLIST_CATEGORIES];
+export type WishlistCategory = (typeof WISHLIST_CATEGORIES)[keyof typeof WISHLIST_CATEGORIES];
